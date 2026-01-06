@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Manithaneya Jananayaga Katchi (MJK)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap">
+    <style>
+        :root {
+            --primary-red: #A31D22;
+            --primary-blue: #1A1A1A;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        .font-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-red);
+            color: white;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #b51f1f;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 260px;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 40;
+            transition: transform 0.3s;
+        }
+
+        .main-content {
+            margin-left: 260px;
+            transition: margin-left 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+        }
+
+        .post-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .like-btn.liked {
+            color: var(--primary-red);
+        }
+
+        .comment-section {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .comment-section.active {
+            max-height: 500px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 9999;
+            overflow-y: auto;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 12px;
+            animation: slideIn 0.4s;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Mobile Menu Button -->
+    <button id="mobileMenuToggle" class="lg:hidden fixed top-4 left-4 z-50 bg-white p-3 rounded-full shadow-lg">
+        <i class="fas fa-bars text-gray-700"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="p-6 border-b border-gray-200">
+            <div class="flex items-center space-x-4 mb-6">
+                <img src="mjklogo.jpg" alt="MJK Logo" class="w-12 h-12">
+                <div>
+                    <h1 class="text-xl font-bold text-gray-900 font-heading">MJK</h1>
+                    <p class="text-xs text-gray-600">Member Dashboard</p>
+                </div>
+            </div>
+
+            <!-- User Profile Summary -->
+            <div id="userProfileSummary" class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                <div
+                    class="w-12 h-12 bg-gradient-to-br from-red-600 to-red-800 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="flex-grow">
+                    <h3 id="userName" class="font-bold text-gray-900 text-sm">Loading...</h3>
+                    <p id="userType" class="text-xs text-gray-600">Member</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="p-4 space-y-2">
+            <a href="#dashboard" class="nav-item active flex items-center p-3 rounded-lg hover:bg-gray-50 transition">
+                <i class="fas fa-tachometer-alt mr-3 text-gray-500"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#exclusive-posts" class="nav-item flex items-center p-3 rounded-lg hover:bg-gray-50 transition">
+                <i class="fas fa-newspaper mr-3 text-gray-500"></i>
+                <span>Exclusive Posts</span>
+            </a>
+
+            <a href="#profile" class="nav-item flex items-center p-3 rounded-lg hover:bg-gray-50 transition">
+                <i class="fas fa-user-circle mr-3 text-gray-500"></i>
+                <span>My Profile</span>
+            </a>
+
+            <a href="#contributions" class="nav-item flex items-center p-3 rounded-lg hover:bg-gray-50 transition">
+                <i class="fas fa-heart mr-3 text-gray-500"></i>
+                <span>My Contributions</span>
+            </a>
+
+            <a href="#comments" class="nav-item flex items-center p-3 rounded-lg hover:bg-gray-50 transition">
+                <i class="fas fa-comments mr-3 text-gray-500"></i>
+                <span>My Comments</span>
+            </a>
+
+            <a href="#likes" class="nav-item flex items-center p-3 rounded-lg hover:bg-gray-50 transition">
+                <i class="fas fa-thumbs-up mr-3 text-gray-500"></i>
+                <span>My Likes</span>
+            </a>
+
+            <a href="#settings" class="nav-item flex items-center p-3 rounded-lg hover:bg-gray-50 transition">
+                <i class="fas fa-cog mr-3 text-gray-500"></i>
+                <span>Settings</span>
+            </a>
+
+            <a href="index.html" target="_blank" rel="noopener noreferrer"
+                class="flex items-center p-3 rounded-lg hover:bg-gray-50 transition">
+                <i class="fas fa-home mr-3 text-gray-500"></i>
+                <span>Back to Main Site</span>
+            </a>
+
+            <button id="logoutBtn"
+                class="w-full flex items-center p-3 rounded-lg hover:bg-red-50 text-red-600 transition mt-8">
+                <i class="fas fa-sign-out-alt mr-3"></i>
+                <span>Logout</span>
+            </button>
+        </nav>
+
+        <!-- Stats -->
+        <div class="p-4 border-t border-gray-200">
+            <div class="grid grid-cols-2 gap-4">
+                <div class="text-center p-3 bg-gray-50 rounded-lg">
+                    <div id="postCount" class="text-2xl font-bold text-gray-900">0</div>
+                    <div class="text-xs text-gray-600">Posts</div>
+                </div>
+                <div class="text-center p-3 bg-gray-50 rounded-lg">
+                    <div id="contributionTotal" class="text-2xl font-bold text-gray-900">₹0</div>
+                    <div class="text-xs text-gray-600">Contributions</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content min-h-screen">
+        <!-- Top Bar -->
+        <header class="bg-white shadow-sm border-b border-gray-200 p-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h2 class="text-xl font-bold text-gray-900" id="pageTitle">Dashboard</h2>
+                </div>
+
+                <div class="flex items-center space-x-4">
+
+                    <!-- Notifications -->
+                    <div class="relative">
+                        <button id="notificationsBtn" class="p-2 rounded-full hover:bg-gray-100 transition">
+                            <i class="fas fa-bell text-gray-600"></i>
+                            <span id="notificationCount"
+                                class="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                        </button>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <button onclick="showDonationModal()" class="btn-primary">
+                        <i class="fas fa-heart mr-2"></i> Make Contribution
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="p-4 md:p-6">
+            <!-- Dashboard Content -->
+            <div id="dashboardContent" class="space-y-6">
+                <!-- Welcome Banner -->
+                <div class="bg-gradient-to-r from-red-600 to-red-800 rounded-2xl p-6 md:p-8 text-white">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-bold mb-2" id="welcomeMessage">Welcome back!</h2>
+                            <p class="text-red-100">You have access to exclusive content and features as a valued
+                                member.</p>
+                        </div>
+                        <button onclick="showProfileModal()"
+                            class="mt-4 md:mt-0 btn-outline text-white border-white hover:bg-white hover:text-red-600">
+                            <i class="fas fa-user-edit mr-2"></i> Complete Your Profile
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats Overview -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <div class="text-3xl font-bold text-gray-900" id="totalContributions">₹0</div>
+                                <div class="text-gray-600">Total Contributions</div>
+                            </div>
+                            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-heart text-red-600 text-xl"></i>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <a href="#contributions" class="text-red-600 hover:text-red-700 text-sm font-medium">
+                                View all contributions →
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <div class="text-3xl font-bold text-gray-900" id="totalComments">0</div>
+                                <div class="text-gray-600">Comments Posted</div>
+                            </div>
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-comments text-blue-600 text-xl"></i>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <a href="#comments" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                                View all comments →
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <div class="text-3xl font-bold text-gray-900" id="totalLikes">0</div>
+                                <div class="text-gray-600">Posts Liked</div>
+                            </div>
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-thumbs-up text-green-600 text-xl"></i>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <a href="#likes" class="text-green-600 hover:text-green-700 text-sm font-medium">
+                                View all likes →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exclusive Posts Section -->
+                <div id="exclusivePostsSection">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold text-gray-900">Exclusive Posts</h3>
+                        <button onclick="createNewPost()" class="btn-primary">
+                            <i class="fas fa-plus mr-2"></i> New Post
+                        </button>
+                    </div>
+
+                    <!-- Posts Container -->
+                    <div id="postsContainer" class="space-y-6">
+                        <!-- Posts will be loaded dynamically -->
+                        <div class="text-center py-12">
+                            <div class="loader mx-auto" style="border-top-color: var(--primary-red);"></div>
+                            <p class="mt-4 text-gray-600">Loading exclusive posts...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h3 class="text-xl font-bold text-gray-900 mb-6">Recent Activity</h3>
+                    <div id="recentActivity" class="space-y-4">
+                        <!-- Activity items will be loaded dynamically -->
+                        <div class="text-center py-8">
+                            <p class="text-gray-600">No recent activity</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Content (Hidden by default) -->
+            <div id="profileContent" class="hidden space-y-6">
+                <!-- Profile content will be loaded here -->
+            </div>
+
+            <!-- Contributions Content (Hidden by default) -->
+            <div id="contributionsContent" class="hidden space-y-6">
+                <!-- Contributions content will be loaded here -->
+            </div>
+
+            <!-- Comments Content (Hidden by default) -->
+            <div id="commentsContent" class="hidden space-y-6">
+                <!-- Comments content will be loaded here -->
+            </div>
+
+            <!-- Likes Content (Hidden by default) -->
+            <div id="likesContent" class="hidden space-y-6">
+                <!-- Likes content will be loaded here -->
+            </div>
+
+            <!-- Settings Content (Hidden by default) -->
+            <div id="settingsContent" class="hidden space-y-6">
+                <!-- Settings content will be loaded here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <!-- Donation Modal -->
+    <div id="donationModal" class="modal">
+        <div class="modal-content">
+            <div class="p-6 md:p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-gray-900">Make a Contribution</h3>
+                    <button onclick="hideDonationModal()"
+                        class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+                </div>
+
+                <div class="mb-8">
+                    <p class="text-gray-600 mb-6">Your contribution helps fund our campaigns and outreach programs.</p>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                        <button onclick="setDonationAmount(500)"
+                            class="p-4 border-2 border-gray-300 rounded-xl text-center hover:border-red-500 transition">
+                            <div class="text-xl font-bold text-gray-900">₹500</div>
+                            <div class="text-sm text-gray-600 mt-1">Supporter</div>
+                        </button>
+                        <button onclick="setDonationAmount(1000)"
+                            class="p-4 border-2 border-red-500 rounded-xl text-center bg-red-50">
+                            <div class="text-xl font-bold text-gray-900">₹1,000</div>
+                            <div class="text-sm text-gray-600 mt-1">Most Popular</div>
+                        </button>
+                        <button onclick="setDonationAmount(2000)"
+                            class="p-4 border-2 border-gray-300 rounded-xl text-center hover:border-red-500 transition">
+                            <div class="text-xl font-bold text-gray-900">₹2,000</div>
+                            <div class="text-sm text-gray-600 mt-1">Sustainer</div>
+                        </button>
+                        <button onclick="setDonationAmount(5000)"
+                            class="p-4 border-2 border-gray-300 rounded-xl text-center hover:border-red-500 transition">
+                            <div class="text-xl font-bold text-gray-900">₹5,000</div>
+                            <div class="text-sm text-gray-600 mt-1">Maximum</div>
+                        </button>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium mb-2">Custom Amount</label>
+                        <div class="relative">
+                            <div class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 font-bold">₹
+                            </div>
+                            <input type="number" id="customDonationAmount" placeholder="Enter amount"
+                                class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500">
+                        </div>
+                    </div>
+
+                    <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200 mb-6">
+                        <p class="text-yellow-800 text-sm">
+                            <i class="fas fa-info-circle mr-2"></i>
+                            Individual donations are limited to ₹5,000 per year as per election laws. Corporate
+                            donations are strictly prohibited.
+                        </p>
+                    </div>
+
+                    <div class="flex justify-end space-x-4">
+                        <button onclick="hideDonationModal()" class="btn-outline px-6 py-3">
+                            Cancel
+                        </button>
+                        <button onclick="processDonation()" class="btn-primary px-6 py-3">
+                            <i class="fas fa-heart mr-2"></i> Donate Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Edit Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <div class="p-6 md:p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-gray-900">Edit Profile</h3>
+                    <button onclick="hideProfileModal()"
+                        class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+                </div>
+
+                <div id="profileForm">
+                    <!-- Profile form will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post Creation Modal -->
+    <div id="postModal" class="modal">
+        <div class="modal-content">
+            <div class="p-6 md:p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-gray-900">Create New Post</h3>
+                    <button onclick="hidePostModal()"
+                        class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+                </div>
+
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Title *</label>
+                        <input type="text" id="postTitle"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500"
+                            placeholder="Enter post title">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Content *</label>
+                        <textarea id="postContent" rows="6"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500"
+                            placeholder="Write your post content here..."></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Category</label>
+                        <select id="postCategory"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500">
+                            <option value="general">General Discussion</option>
+                            <option value="campaign">Campaign Update</option>
+                            <option value="event">Event Announcement</option>
+                            <option value="policy">Policy Discussion</option>
+                            <option value="suggestion">Suggestion</option>
+                        </select>
+                    </div>
+
+                    <div class="flex justify-end space-x-4">
+                        <button onclick="hidePostModal()" class="btn-outline px-6 py-3">
+                            Cancel
+                        </button>
+                        <button onclick="submitPost()" class="btn-primary px-6 py-3">
+                            <i class="fas fa-paper-plane mr-2"></i> Publish Post
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comment Modal -->
+    <div id="commentModal" class="modal">
+        <div class="modal-content">
+            <div class="p-6 md:p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-gray-900">Add Comment</h3>
+                    <button onclick="hideCommentModal()"
+                        class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+                </div>
+
+                <div class="space-y-6">
+                    <div id="commentPostPreview" class="bg-gray-50 p-4 rounded-lg">
+                        <!-- Post preview will be loaded here -->
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Your Comment *</label>
+                        <textarea id="commentText" rows="4"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500"
+                            placeholder="Write your comment here..."></textarea>
+                    </div>
+
+                    <div class="flex justify-end space-x-4">
+                        <button onclick="hideCommentModal()" class="btn-outline px-6 py-3">
+                            Cancel
+                        </button>
+                        <button onclick="submitComment()" class="btn-primary px-6 py-3">
+                            <i class="fas fa-comment mr-2"></i> Post Comment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let currentUser = null;
+        let currentPostId = null;
+        let currentDonationAmount = 1000;
+
+        // Check authentication
+        function checkAuth() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const userData = localStorage.getItem('currentUser');
+
+            if (!isLoggedIn || !userData) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            currentUser = JSON.parse(userData);
+            loadUserData();
+        }
+
+        // Load user data
+        function loadUserData() {
+            // Update user info
+            document.getElementById('userName').textContent = `${currentUser.firstName} ${currentUser.lastName}`;
+            document.getElementById('userType').textContent = currentUser.userType.charAt(0).toUpperCase() + currentUser.userType.slice(1);
+
+            // Update welcome message
+            document.getElementById('welcomeMessage').textContent = `Welcome back, ${currentUser.firstName}!`;
+
+            // Update stats
+            updateStats();
+
+            // Load exclusive posts
+            loadExclusivePosts();
+
+            // Load recent activity
+            loadRecentActivity();
+
+            // Pre-load content for all tabs
+            loadProfileContent();
+            loadContributionsContent();
+            loadCommentsContent();
+            loadLikesContent();
+            loadSettingsContent();
+        }
+
+        // Update stats
+        function updateStats() {
+            // Contributions
+            const totalContributions = currentUser.contributions?.reduce((sum, item) => sum + item.amount, 0) || 0;
+            document.getElementById('totalContributions').textContent = `₹${totalContributions.toLocaleString()}`;
+            document.getElementById('contributionTotal').textContent = `₹${totalContributions.toLocaleString()}`;
+
+            // Comments
+            const totalComments = currentUser.comments?.length || 0;
+            document.getElementById('totalComments').textContent = totalComments;
+
+            // Likes
+            const totalLikes = currentUser.likes?.length || 0;
+            document.getElementById('totalLikes').textContent = totalLikes;
+
+            // Posts
+            const postCount = currentUser.posts?.length || 0;
+            document.getElementById('postCount').textContent = postCount;
+        }
+
+        // Load exclusive posts
+        function loadExclusivePosts() {
+            // Sample exclusive posts (in real app, fetch from API)
+            const exclusivePosts = [
+                {
+                    id: 1,
+                    title: "Campaign Strategy Meeting - Key Decisions",
+                    content: "Our campaign committee met yesterday to finalize the strategy for the upcoming elections. Key decisions were made regarding outreach programs and digital campaigning.",
+                    author: "Campaign Team",
+                    date: "2024-01-20",
+                    likes: 42,
+                    comments: 8,
+                    category: "campaign",
+                    isLiked: currentUser.likes?.includes(1) || false,
+                    commentsList: [
+                        { id: 1, user: "R. Kumar", text: "Great strategy! Looking forward to the implementation.", date: "2024-01-20" },
+                        { id: 2, user: "S. Priya", text: "Digital campaigning is the need of the hour. Good decision!", date: "2024-01-20" }
+                    ]
+                },
+                {
+                    id: 2,
+                    title: "Upcoming Rally in Coimbatore",
+                    content: "We're organizing a major rally in Coimbatore next week. All members are invited to participate and help with the arrangements.",
+                    author: "Event Team",
+                    date: "2024-01-18",
+                    likes: 28,
+                    comments: 5,
+                    category: "event",
+                    isLiked: currentUser.likes?.includes(2) || false,
+                    commentsList: [
+                        { id: 1, user: "M. Rajan", text: "I'll be there with 10 volunteers from my area.", date: "2024-01-18" }
+                    ]
+                },
+                {
+                    id: 3,
+                    title: "New Policy Proposal: Education Reform",
+                    content: "Our policy team has drafted a comprehensive education reform proposal. We welcome feedback from all members before final submission.",
+                    author: "Policy Committee",
+                    date: "2024-01-15",
+                    likes: 56,
+                    comments: 12,
+                    category: "policy",
+                    isLiked: currentUser.likes?.includes(3) || false,
+                    commentsList: []
+                }
+            ];
+
+            const postsContainer = document.getElementById('postsContainer');
+            postsContainer.innerHTML = '';
+
+            exclusivePosts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.className = 'post-card p-6';
+                postElement.innerHTML = `
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <span class="inline-block px-3 py-1 text-xs font-medium rounded-full 
+                            ${post.category === 'campaign' ? 'bg-red-100 text-red-800' :
+                        post.category === 'event' ? 'bg-blue-100 text-blue-800' :
+                            post.category === 'policy' ? 'bg-green-100 text-green-800' :
+                                'bg-gray-100 text-gray-800'}">
+                            ${post.category.charAt(0).toUpperCase() + post.category.slice(1)}
+                        </span>
+                        <h4 class="text-lg font-bold text-gray-900 mt-2">${post.title}</h4>
+                        <p class="text-sm text-gray-600 mt-1">
+                            By ${post.author} • ${new Date(post.date).toLocaleDateString()}
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <p class="text-gray-700">${post.content}</p>
+                </div>
+                
+                <div class="flex items-center justify-between border-t border-gray-100 pt-4">
+                    <div class="flex items-center space-x-6">
+                        <button onclick="toggleLike(${post.id})" class="like-btn flex items-center space-x-2 ${post.isLiked ? 'liked' : 'text-gray-600'}">
+                            <i class="fas fa-thumbs-up"></i>
+                            <span>${post.likes}</span>
+                        </button>
+                        <button onclick="showComments(${post.id})" class="flex items-center space-x-2 text-gray-600">
+                            <i class="fas fa-comment"></i>
+                            <span>${post.comments}</span>
+                        </button>
+                    </div>
+                    <button onclick="showAddCommentModal(${post.id})" class="text-sm text-red-600 hover:text-red-700 font-medium">
+                        <i class="fas fa-comment-medical mr-1"></i> Add Comment
+                    </button>
+                </div>
+                
+                <div id="comments-${post.id}" class="comment-section mt-4">
+                    <div class="space-y-4">
+                        ${post.commentsList.map(comment => `
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center mr-3">
+                                        <i class="fas fa-user text-gray-600 text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-gray-900">${comment.user}</div>
+                                        <div class="text-xs text-gray-500">${new Date(comment.date).toLocaleDateString()}</div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700">${comment.text}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+                postsContainer.appendChild(postElement);
+            });
+        }
+
+        // Load recent activity
+        function loadRecentActivity() {
+            const recentActivity = [
+                { type: 'comment', text: 'You commented on "Campaign Strategy Meeting"', time: '2 hours ago' },
+                { type: 'like', text: 'You liked "New Policy Proposal: Education Reform"', time: '1 day ago' },
+                { type: 'contribution', text: 'You contributed ₹1,000 to the campaign', time: '3 days ago' },
+                { type: 'post', text: 'Your post "Local Issues Discussion" was published', time: '1 week ago' }
+            ];
+
+            const activityContainer = document.getElementById('recentActivity');
+            activityContainer.innerHTML = '';
+
+            recentActivity.forEach(activity => {
+                const activityElement = document.createElement('div');
+                activityElement.className = 'flex items-center p-4 border border-gray-200 rounded-lg';
+
+                let icon = 'fa-comment';
+                let iconColor = 'text-blue-600';
+                let bgColor = 'bg-blue-100';
+
+                switch (activity.type) {
+                    case 'like':
+                        icon = 'fa-thumbs-up';
+                        iconColor = 'text-green-600';
+                        bgColor = 'bg-green-100';
+                        break;
+                    case 'contribution':
+                        icon = 'fa-heart';
+                        iconColor = 'text-red-600';
+                        bgColor = 'bg-red-100';
+                        break;
+                    case 'post':
+                        icon = 'fa-newspaper';
+                        iconColor = 'text-purple-600';
+                        bgColor = 'bg-purple-100';
+                        break;
+                }
+
+                activityElement.innerHTML = `
+                <div class="flex items-center">
+                    <div class="w-10 h-10 ${bgColor} rounded-lg flex items-center justify-center mr-4">
+                        <i class="fas ${icon} ${iconColor}"></i>
+                    </div>
+                    <div>
+                        <div class="font-medium text-gray-900">${activity.text}</div>
+                        <div class="text-sm text-gray-500">${activity.time}</div>
+                    </div>
+                </div>
+            `;
+                activityContainer.appendChild(activityElement);
+            });
+        }
+
+        // Load Profile Content
+        function loadProfileContent() {
+            const profileContent = document.getElementById('profileContent');
+            profileContent.innerHTML = `
+            <div class="bg-white rounded-2xl shadow-sm p-6 md:p-8">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
+                    <h3 class="text-2xl font-bold text-gray-900">My Profile</h3>
+                    <button onclick="showProfileModal()" class="mt-4 md:mt-0 btn-primary">
+                        <i class="fas fa-edit mr-2"></i> Edit Profile
+                    </button>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Profile Overview -->
+                    <div class="lg:col-span-2">
+                        <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 mb-8">
+                            <div class="flex items-center mb-6">
+                                <div class="w-20 h-20 bg-gradient-to-br from-red-600 to-red-800 rounded-full flex items-center justify-center text-white font-bold text-2xl mr-6">
+                                    ${currentUser.firstName.charAt(0)}${currentUser.lastName.charAt(0)}
+                                </div>
+                                <div>
+                                    <h4 class="text-2xl font-bold text-gray-900">${currentUser.firstName} ${currentUser.lastName}</h4>
+                                    <div class="flex items-center mt-2">
+                                        <span class="inline-block px-3 py-1 bg-red-100 text-red-800 text-sm font-medium rounded-full mr-3">
+                                            ${currentUser.userType.charAt(0).toUpperCase() + currentUser.userType.slice(1)}
+                                        </span>
+                                        <span class="text-gray-600">
+                                            <i class="fas fa-map-marker-alt mr-1"></i> ${currentUser.district}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div class="text-center p-3 bg-white rounded-lg">
+                                    <div class="text-xl font-bold text-gray-900">${currentUser.posts?.length || 0}</div>
+                                    <div class="text-sm text-gray-600">Posts</div>
+                                </div>
+                                <div class="text-center p-3 bg-white rounded-lg">
+                                    <div class="text-xl font-bold text-gray-900">${currentUser.comments?.length || 0}</div>
+                                    <div class="text-sm text-gray-600">Comments</div>
+                                </div>
+                                <div class="text-center p-3 bg-white rounded-lg">
+                                    <div class="text-xl font-bold text-gray-900">${currentUser.likes?.length || 0}</div>
+                                    <div class="text-sm text-gray-600">Likes</div>
+                                </div>
+                                <div class="text-center p-3 bg-white rounded-lg">
+                                    <div class="text-xl font-bold text-gray-900">${currentUser.contributions?.length || 0}</div>
+                                    <div class="text-sm text-gray-600">Contributions</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Personal Information -->
+                        <div class="mb-8">
+                            <h4 class="text-xl font-bold text-gray-900 mb-4">Personal Information</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <div class="text-sm text-gray-600 mb-1">Email Address</div>
+                                    <div class="font-medium text-gray-900">${currentUser.email}</div>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <div class="text-sm text-gray-600 mb-1">Phone Number</div>
+                                    <div class="font-medium text-gray-900">${currentUser.phone}</div>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <div class="text-sm text-gray-600 mb-1">District</div>
+                                    <div class="font-medium text-gray-900">${currentUser.district}</div>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <div class="text-sm text-gray-600 mb-1">Member Since</div>
+                                    <div class="font-medium text-gray-900">${new Date(currentUser.createdAt).toLocaleDateString()}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div class="lg:col-span-1">
+                        <div class="bg-gray-50 rounded-xl p-6">
+                            <h4 class="text-lg font-bold text-gray-900 mb-4">Quick Actions</h4>
+                            <div class="space-y-3">
+                                <button onclick="showDonationModal()" class="w-full flex items-center p-3 bg-white rounded-lg hover:bg-gray-100 transition">
+                                    <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-heart text-red-600"></i>
+                                    </div>
+                                    <div class="text-left">
+                                        <div class="font-medium text-gray-900">Make Contribution</div>
+                                        <div class="text-xs text-gray-600">Support our campaign</div>
+                                    </div>
+                                </button>
+                                
+                                <button onclick="createNewPost()" class="w-full flex items-center p-3 bg-white rounded-lg hover:bg-gray-100 transition">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-plus text-blue-600"></i>
+                                    </div>
+                                    <div class="text-left">
+                                        <div class="font-medium text-gray-900">Create Post</div>
+                                        <div class="text-xs text-gray-600">Share with community</div>
+                                    </div>
+                                </button>
+                                
+                                <a href="../index.html" class="block w-full flex items-center p-3 bg-white rounded-lg hover:bg-gray-100 transition">
+                                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-home text-green-600"></i>
+                                    </div>
+                                    <div class="text-left">
+                                        <div class="font-medium text-gray-900">Visit Main Site</div>
+                                        <div class="text-xs text-gray-600">Public information</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Profile Completion -->
+                        <div class="mt-6 bg-gradient-to-r from-red-600 to-red-700 rounded-xl p-6 text-white">
+                            <h4 class="text-lg font-bold mb-2">Profile Completion</h4>
+                            <div class="mb-4">
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>${currentUser.profileComplete ? 'Complete' : 'Incomplete'}</span>
+                                    <span>${currentUser.profileComplete ? '100%' : '60%'}</span>
+                                </div>
+                                <div class="w-full bg-red-800 rounded-full h-2">
+                                    <div class="bg-white h-2 rounded-full" style="width: ${currentUser.profileComplete ? '100' : '60'}%"></div>
+                                </div>
+                            </div>
+                            <button onclick="showProfileModal()" class="w-full btn-outline text-white border-white hover:bg-white hover:text-red-600">
+                                ${currentUser.profileComplete ? 'Update Profile' : 'Complete Profile'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        }
+
+        // Load Contributions Content
+        function loadContributionsContent() {
+            const totalContributions = currentUser.contributions?.reduce((sum, item) => sum + item.amount, 0) || 0;
+            const contributionsContent = document.getElementById('contributionsContent');
+            contributionsContent.innerHTML = `
+            <div class="bg-white rounded-2xl shadow-sm p-6 md:p-8">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900">My Contributions</h3>
+                        <p class="text-gray-600 mt-2">Track your donations and support history</p>
+                    </div>
+                    <button onclick="showDonationModal()" class="mt-4 md:mt-0 btn-primary">
+                        <i class="fas fa-plus mr-2"></i> Make New Contribution
+                    </button>
+                </div>
+                
+                <!-- Contribution Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-gradient-to-r from-red-600 to-red-800 rounded-xl p-6 text-white">
+                        <div class="text-3xl font-bold">₹${totalContributions.toLocaleString()}</div>
+                        <div class="text-red-100">Total Contributions</div>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-6">
+                        <div class="text-3xl font-bold text-gray-900">${currentUser.contributions?.length || 0}</div>
+                        <div class="text-gray-600">Number of Donations</div>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-6">
+                        <div class="text-3xl font-bold text-gray-900">₹${Math.max(0, 5000 - totalContributions).toLocaleString()}</div>
+                        <div class="text-gray-600">Remaining Limit</div>
+                    </div>
+                </div>
+                
+                <!-- Contribution History -->
+                <div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-4">Contribution History</h4>
+                    ${currentUser.contributions && currentUser.contributions.length > 0 ? `
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="bg-gray-50">
+                                        <th class="text-left p-4 text-sm font-medium text-gray-900">Date</th>
+                                        <th class="text-left p-4 text-sm font-medium text-gray-900">Transaction ID</th>
+                                        <th class="text-left p-4 text-sm font-medium text-gray-900">Type</th>
+                                        <th class="text-left p-4 text-sm font-medium text-gray-900">Amount</th>
+                                        <th class="text-left p-4 text-sm font-medium text-gray-900">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200">
+                                    ${currentUser.contributions.map(contribution => `
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="p-4 text-sm text-gray-900">${new Date(contribution.date).toLocaleDateString()}</td>
+                                            <td class="p-4 text-sm text-gray-900">${contribution.transactionId}</td>
+                                            <td class="p-4 text-sm text-gray-900">${contribution.type}</td>
+                                            <td class="p-4 text-sm font-medium text-gray-900">₹${contribution.amount.toLocaleString()}</td>
+                                            <td class="p-4">
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                                    <i class="fas fa-check-circle mr-1"></i> Completed
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    ` : `
+                        <div class="text-center py-12">
+                            <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-heart text-gray-400 text-2xl"></i>
+                            </div>
+                            <h4 class="text-lg font-medium text-gray-900 mb-2">No Contributions Yet</h4>
+                            <p class="text-gray-600 mb-6">Make your first contribution to support our campaign</p>
+                            <button onclick="showDonationModal()" class="btn-primary">
+                                <i class="fas fa-heart mr-2"></i> Make Your First Contribution
+                            </button>
+                        </div>
+                    `}
+                </div>
+                
+                <!-- Legal Information -->
+                <div class="mt-8 bg-yellow-50 border border-yellow-200 rounded-xl p-6">
+                    <h4 class="text-lg font-bold text-gray-900 mb-3 flex items-center">
+                        <i class="fas fa-info-circle text-yellow-600 mr-2"></i>
+                        Important Information
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mr-2 mt-0.5"></i>
+                            Individual donations are limited to ₹5,000 per year as per election laws
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mr-2 mt-0.5"></i>
+                            Corporate donations are strictly prohibited
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mr-2 mt=0.5"></i>
+                            All contributions are used for campaign activities and party development
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        `;
+        }
+
+        // Load Comments Content
+        function loadCommentsContent() {
+            const commentsContent = document.getElementById('commentsContent');
+            commentsContent.innerHTML = `
+            <div class="bg-white rounded-2xl shadow-sm p-6 md:p-8">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900">My Comments</h3>
+                        <p class="text-gray-600 mt-2">Review and manage your comments on exclusive posts</p>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <span class="inline-block px-4 py-2 bg-gray-100 text-gray-800 rounded-lg font-medium">
+                            ${currentUser.comments?.length || 0} Comments
+                        </span>
+                    </div>
+                </div>
+                
+                ${currentUser.comments && currentUser.comments.length > 0 ? `
+                    <div class="space-y-6">
+                        ${currentUser.comments.map((comment, index) => `
+                            <div class="border border-gray-200 rounded-xl p-6">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center">
+                                        <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center mr-3">
+                                            <i class="fas fa-user text-gray-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-gray-900">You commented on</div>
+                                            <div class="text-sm text-gray-600">${new Date(comment.date).toLocaleDateString()}</div>
+                                        </div>
+                                    </div>
+                                    <button onclick="deleteComment(${index})" class="text-red-600 hover:text-red-700">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                    <p class="text-gray-700">${comment.text}</p>
+                                </div>
+                                
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-thumbs-up mr-1"></i>
+                                    <span class="mr-4">12 Likes</span>
+                                    <i class="fas fa-reply mr-1"></i>
+                                    <span>3 Replies</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : `
+                    <div class="text-center py-12">
+                        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-comments text-gray-400 text-2xl"></i>
+                        </div>
+                        <h4 class="text-lg font-medium text-gray-900 mb-2">No Comments Yet</h4>
+                        <p class="text-gray-600 mb-6">You haven't commented on any posts yet</p>
+                        <a href="#exclusive-posts" class="nav-item btn-primary">
+                            <i class="fas fa-newspaper mr-2"></i> Browse Posts
+                        </a>
+                    </div>
+                `}
+            </div>
+        `;
+        }
+
+        // Load Likes Content
+        function loadLikesContent() {
+            const likesContent = document.getElementById('likesContent');
+            likesContent.innerHTML = `
+            <div class="bg-white rounded-2xl shadow-sm p-6 md:p-8">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900">My Likes</h3>
+                        <p class="text-gray-600 mt-2">Posts you've shown appreciation for</p>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <span class="inline-block px-4 py-2 bg-gray-100 text-gray-800 rounded-lg font-medium">
+                            ${currentUser.likes?.length || 0} Likes
+                        </span>
+                    </div>
+                </div>
+                
+                ${currentUser.likes && currentUser.likes.length > 0 ? `
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        ${currentUser.likes.map(likeId => `
+                            <div class="border border-gray-200 rounded-xl p-6">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                                        <i class="fas fa-thumbs-up text-red-600"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-gray-900">Post #${likeId}</div>
+                                        <div class="text-sm text-gray-600">You liked this post</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h4 class="font-bold text-gray-900 mb-2">Campaign Update</h4>
+                                    <p class="text-gray-600 text-sm line-clamp-2">
+                                        Important updates about our campaign strategy and upcoming events...
+                                    </p>
+                                </div>
+                                
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-gray-600">
+                                        <i class="fas fa-calendar mr-1"></i> Jan 15, 2024
+                                    </span>
+                                    <a href="#exclusive-posts" class="text-red-600 hover:text-red-700 text-sm font-medium">
+                                        View Post →
+                                    </a>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : `
+                    <div class="text-center py-12">
+                        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-thumbs-up text-gray-400 text-2xl"></i>
+                        </div>
+                        <h4 class="text-lg font-medium text-gray-900 mb-2">No Likes Yet</h4>
+                        <p class="text-gray-600 mb-6">You haven't liked any posts yet</p>
+                        <a href="#exclusive-posts" class="nav-item btn-primary">
+                            <i class="fas fa-newspaper mr-2"></i> Browse Posts
+                        </a>
+                    </div>
+                `}
+            </div>
+        `;
+        }
+
+        // Load Settings Content
+        function loadSettingsContent() {
+            const settingsContent = document.getElementById('settingsContent');
+            settingsContent.innerHTML = `
+            <div class="bg-white rounded-2xl shadow-sm p-6 md:p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-8">Settings</h3>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Account Settings -->
+                    <div class="lg:col-span-2">
+                        <div class="mb-8">
+                            <h4 class="text-xl font-bold text-gray-900 mb-6">Account Settings</h4>
+                            
+                            <div class="space-y-6">
+                                <!-- Notification Preferences -->
+                                <div class="border border-gray-200 rounded-xl p-6">
+                                    <h5 class="font-bold text-gray-900 mb-4 flex items-center">
+                                        <i class="fas fa-bell text-red-600 mr-3"></i>
+                                        Notification Preferences
+                                    </h5>
+                                    <div class="space-y-4">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <div class="font-medium text-gray-900">Email Notifications</div>
+                                                <div class="text-sm text-gray-600">Receive updates via email</div>
+                                            </div>
+                                            <label class="relative inline-flex items-center cursor-pointer">
+                                                <input type="checkbox" class="sr-only peer" checked>
+                                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600"></div>
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <div class="font-medium text-gray-900">SMS Notifications</div>
+                                                <div class="text-sm text-gray-600">Receive updates via SMS</div>
+                                            </div>
+                                            <label class="relative inline-flex items-center cursor-pointer">
+                                                <input type="checkbox" class="sr-only peer">
+                                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600"></div>
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <div class="font-medium text-gray-900">Event Reminders</div>
+                                                <div class="text-sm text-gray-600">Get reminders for upcoming events</div>
+                                            </div>
+                                            <label class="relative inline-flex items-center cursor-pointer">
+                                                <input type="checkbox" class="sr-only peer" checked>
+                                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600"></div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Privacy Settings -->
+                                <div class="border border-gray-200 rounded-xl p-6">
+                                    <h5 class="font-bold text-gray-900 mb-4 flex items-center">
+                                        <i class="fas fa-shield-alt text-blue-600 mr-3"></i>
+                                        Privacy Settings
+                                    </h5>
+                                    <div class="space-y-4">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <div class="font-medium text-gray-900">Show Profile Publicly</div>
+                                                <div class="text-sm text-gray-600">Allow others to see your profile</div>
+                                            </div>
+                                            <label class="relative inline-flex items-center cursor-pointer">
+                                                <input type="checkbox" class="sr-only peer">
+                                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600"></div>
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <div class="font-medium text-gray-900">Show Contributions</div>
+                                                <div class="text-sm text-gray-600">Display contribution history</div>
+                                            </div>
+                                            <label class="relative inline-flex items-center cursor-pointer">
+                                                <input type="checkbox" class="sr-only peer">
+                                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600"></div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Password Change -->
+                                <div class="border border-gray-200 rounded-xl p-6">
+                                    <h5 class="font-bold text-gray-900 mb-4 flex items-center">
+                                        <i class="fas fa-key text-green-600 mr-3"></i>
+                                        Change Password
+                                    </h5>
+                                    <div class="space-y-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Current Password</label>
+                                            <input type="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">New Password</label>
+                                            <input type="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Confirm New Password</label>
+                                            <input type="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500">
+                                        </div>
+                                        <button class="btn-primary">
+                                            <i class="fas fa-save mr-2"></i> Update Password
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Account Actions -->
+                    <div class="lg:col-span-1">
+                        <div class="space-y-6">
+                            <!-- Download Data -->
+                            <div class="border border-gray-200 rounded-xl p-6">
+                                <h5 class="font-bold text-gray-900 mb-4">Download Your Data</h5>
+                                <p class="text-gray-600 text-sm mb-4">Download a copy of your personal data and activity history.</p>
+                                <button class="w-full btn-outline">
+                                    <i class="fas fa-download mr-2"></i> Request Data Export
+                                </button>
+                            </div>
+                            
+                            <!-- Delete Account -->
+                            <div class="border border-red-200 rounded-xl p-6 bg-red-50">
+                                <h5 class="font-bold text-gray-900 mb-4">Delete Account</h5>
+                                <p class="text-gray-600 text-sm mb-4">Permanently delete your account and all associated data.</p>
+                                <button onclick="deleteAccount()" class="w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition font-medium">
+                                    <i class="fas fa-trash mr-2"></i> Delete Account
+                                </button>
+                            </div>
+                            
+                            <!-- Help & Support -->
+                            <div class="border border-gray-200 rounded-xl p-6">
+                                <h5 class="font-bold text-gray-900 mb-4">Help & Support</h5>
+                                <div class="space-y-3">
+                                    <a href="#" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                        <i class="fas fa-question-circle text-gray-600 mr-3"></i>
+                                        <span class="font-medium text-gray-900">FAQ & Help Center</span>
+                                    </a>
+                                    <a href="#" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                        <i class="fas fa-envelope text-gray-600 mr-3"></i>
+                                        <span class="font-medium text-gray-900">Contact Support</span>
+                                    </a>
+                                    <a href="#" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                        <i class="fas fa-file-alt text-gray-600 mr-3"></i>
+                                        <span class="font-medium text-gray-900">Terms & Conditions</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        }
+
+        // Helper function to delete comment
+        function deleteComment(index) {
+            if (confirm('Are you sure you want to delete this comment?')) {
+                currentUser.comments.splice(index, 1);
+                saveUserData();
+                loadCommentsContent();
+                updateStats();
+                alert('Comment deleted successfully!');
+            }
+        }
+
+        // Helper function to delete account
+        function deleteAccount() {
+            if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+                if (confirm('This will permanently delete all your data. Type DELETE to confirm:')) {
+                    // Clear user data
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('currentUser');
+                    localStorage.removeItem('userData');
+                    localStorage.removeItem('userEmail');
+                    sessionStorage.removeItem('userSession');
+
+                    // Redirect to login
+                    window.location.href = 'login.html';
+                }
+            }
+        }
+
+        // Navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Remove active class from all items
+                document.querySelectorAll('.nav-item').forEach(i => {
+                    i.classList.remove('active', 'bg-red-50', 'text-red-600');
+                    i.querySelector('i').classList.remove('text-red-600');
+                    i.querySelector('i').classList.add('text-gray-500');
+                });
+
+                // Add active class to clicked item
+                this.classList.add('active', 'bg-red-50', 'text-red-600');
+                this.querySelector('i').classList.remove('text-gray-500');
+                this.querySelector('i').classList.add('text-red-600');
+
+                // Get target section
+                const target = this.getAttribute('href').substring(1);
+
+                // Hide all content sections
+                document.querySelectorAll('[id$="Content"]').forEach(section => {
+                    section.classList.add('hidden');
+                });
+
+                // Show target section
+                document.getElementById(`${target}Content`).classList.remove('hidden');
+                document.getElementById('pageTitle').textContent = this.querySelector('span').textContent;
+
+                // Close mobile menu if open
+                if (window.innerWidth < 768) {
+                    document.querySelector('.sidebar').classList.remove('active');
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileMenuToggle').addEventListener('click', function () {
+            document.querySelector('.sidebar').classList.toggle('active');
+        });
+
+        // Like functionality
+        function toggleLike(postId) {
+            const likeBtn = document.querySelector(`button[onclick="toggleLike(${postId})"]`);
+            const likeCount = likeBtn.querySelector('span');
+
+            if (likeBtn.classList.contains('liked')) {
+                // Unlike
+                likeBtn.classList.remove('liked');
+                likeCount.textContent = parseInt(likeCount.textContent) - 1;
+
+                // Update user data
+                if (currentUser.likes) {
+                    currentUser.likes = currentUser.likes.filter(id => id !== postId);
+                }
+            } else {
+                // Like
+                likeBtn.classList.add('liked');
+                likeCount.textContent = parseInt(likeCount.textContent) + 1;
+
+                // Update user data
+                if (!currentUser.likes) currentUser.likes = [];
+                currentUser.likes.push(postId);
+            }
+
+            // Update stats
+            updateStats();
+            saveUserData();
+        }
+
+        // Show comments
+        function showComments(postId) {
+            const commentSection = document.getElementById(`comments-${postId}`);
+            commentSection.classList.toggle('active');
+        }
+
+        // Modal functions
+        function showDonationModal() {
+            document.getElementById('donationModal').style.display = 'block';
+        }
+
+        function hideDonationModal() {
+            document.getElementById('donationModal').style.display = 'none';
+        }
+
+        function setDonationAmount(amount) {
+            currentDonationAmount = amount;
+            document.getElementById('customDonationAmount').value = amount;
+
+            // Update button styles
+            document.querySelectorAll('#donationModal button').forEach(btn => {
+                btn.classList.remove('border-red-500', 'bg-red-50');
+                btn.classList.add('border-gray-300');
+            });
+
+            event.target.classList.remove('border-gray-300');
+            event.target.classList.add('border-red-500', 'bg-red-50');
+        }
+
+        function processDonation() {
+            const amount = parseInt(document.getElementById('customDonationAmount').value) || currentDonationAmount;
+
+            if (amount < 100) {
+                alert('Minimum donation amount is ₹100');
+                return;
+            }
+
+            if (amount > 5000) {
+                alert('Maximum donation amount is ₹5,000 per year as per election laws');
+                return;
+            }
+
+            // Add contribution to user data
+            if (!currentUser.contributions) currentUser.contributions = [];
+            currentUser.contributions.push({
+                amount: amount,
+                date: new Date().toISOString().split('T')[0],
+                type: 'Donation',
+                transactionId: 'TXN' + Date.now()
+            });
+
+            // Update stats and save
+            updateStats();
+            saveUserData();
+
+            // Show success message
+            alert(`Thank you for your contribution of ₹${amount}! This helps our campaign significantly.`);
+
+            // Close modal
+            hideDonationModal();
+
+            // Update notifications
+            updateNotifications();
+        }
+
+        function showProfileModal() {
+            document.getElementById('profileModal').style.display = 'block';
+
+            // Load profile form
+            document.getElementById('profileForm').innerHTML = `
+            <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">First Name *</label>
+                        <input type="text" id="profileFirstName" value="${currentUser.firstName}" 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Last Name *</label>
+                        <input type="text" id="profileLastName" value="${currentUser.lastName}" 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500">
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">Email Address *</label>
+                    <input type="email" id="profileEmail" value="${currentUser.email}" 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500" readonly>
+                </div>
+                
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">Phone Number *</label>
+                    <input type="tel" id="profilePhone" value="${currentUser.phone}" 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500">
+                </div>
+                
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">District *</label>
+                    <select id="profileDistrict" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500">
+                        <option value="Chennai" ${currentUser.district === 'Chennai' ? 'selected' : ''}>Chennai</option>
+                        <option value="Coimbatore" ${currentUser.district === 'Coimbatore' ? 'selected' : ''}>Coimbatore</option>
+                        <option value="Madurai" ${currentUser.district === 'Madurai' ? 'selected' : ''}>Madurai</option>
+                        <option value="Tiruchirappalli" ${currentUser.district === 'Tiruchirappalli' ? 'selected' : ''}>Tiruchirappalli</option>
+                        <option value="Salem" ${currentUser.district === 'Salem' ? 'selected' : ''}>Salem</option>
+                        <option value="Other" ${currentUser.district === 'Other' ? 'selected' : ''}>Other</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">Bio</label>
+                    <textarea id="profileBio" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500" 
+                              placeholder="Tell us about yourself...">${currentUser.bio || ''}</textarea>
+                </div>
+                
+                <div class="flex justify-end space-x-4">
+                    <button type="button" onclick="hideProfileModal()" class="btn-outline px-6 py-3">
+                        Cancel
+                    </button>
+                    <button type="button" onclick="saveProfile()" class="btn-primary px-6 py-3">
+                        <i class="fas fa-save mr-2"></i> Save Changes
+                    </button>
+                </div>
+            </form>
+        `;
+        }
+
+        function hideProfileModal() {
+            document.getElementById('profileModal').style.display = 'none';
+        }
+
+        function saveProfile() {
+            // Update user data
+            currentUser.firstName = document.getElementById('profileFirstName').value;
+            currentUser.lastName = document.getElementById('profileLastName').value;
+            currentUser.phone = document.getElementById('profilePhone').value;
+            currentUser.district = document.getElementById('profileDistrict').value;
+            currentUser.bio = document.getElementById('profileBio').value;
+            currentUser.profileComplete = true;
+
+            // Save and update UI
+            saveUserData();
+            loadUserData();
+            hideProfileModal();
+
+            alert('Profile updated successfully!');
+        }
+
+        function createNewPost() {
+            document.getElementById('postModal').style.display = 'block';
+        }
+
+        function hidePostModal() {
+            document.getElementById('postModal').style.display = 'none';
+            document.getElementById('postTitle').value = '';
+            document.getElementById('postContent').value = '';
+            document.getElementById('postCategory').value = 'general';
+        }
+
+        function submitPost() {
+            const title = document.getElementById('postTitle').value.trim();
+            const content = document.getElementById('postContent').value.trim();
+            const category = document.getElementById('postCategory').value;
+
+            if (!title || !content) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            // Create new post
+            const newPost = {
+                id: Date.now(),
+                title: title,
+                content: content,
+                author: `${currentUser.firstName} ${currentUser.lastName}`,
+                date: new Date().toISOString().split('T')[0],
+                likes: 0,
+                comments: 0,
+                category: category,
+                isLiked: false,
+                commentsList: []
+            };
+
+            // Add to user's posts
+            if (!currentUser.posts) currentUser.posts = [];
+            currentUser.posts.push(newPost);
+
+            // Save and reload
+            saveUserData();
+            loadExclusivePosts();
+            hidePostModal();
+
+            alert('Post published successfully!');
+        }
+
+        function showAddCommentModal(postId) {
+            currentPostId = postId;
+            document.getElementById('commentModal').style.display = 'block';
+
+            // Load post preview
+            // In a real app, you would fetch the post data
+            document.getElementById('commentPostPreview').innerHTML = `
+            <div class="text-sm text-gray-600 mb-2">Replying to post:</div>
+            <div class="font-medium text-gray-900">"Sample Post Title"</div>
+        `;
+        }
+
+        function hideCommentModal() {
+            document.getElementById('commentModal').style.display = 'none';
+            document.getElementById('commentText').value = '';
+            currentPostId = null;
+        }
+
+        function submitComment() {
+            const commentText = document.getElementById('commentText').value.trim();
+
+            if (!commentText) {
+                alert('Please enter a comment');
+                return;
+            }
+
+            if (!currentPostId) {
+                alert('No post selected');
+                return;
+            }
+
+            // Add comment to user's comments
+            if (!currentUser.comments) currentUser.comments = [];
+            currentUser.comments.push({
+                postId: currentPostId,
+                text: commentText,
+                date: new Date().toISOString()
+            });
+
+            // Save and reload
+            saveUserData();
+            updateStats();
+            hideCommentModal();
+
+            alert('Comment added successfully!');
+        }
+
+        function updateNotifications() {
+            // In a real app, you would fetch notifications
+            const notificationCount = Math.floor(Math.random() * 5);
+            document.getElementById('notificationCount').textContent = notificationCount;
+        }
+
+        function saveUserData() {
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+            // Also update the main user data in localStorage
+            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+            Object.assign(userData, currentUser);
+            localStorage.setItem('userData', JSON.stringify(userData));
+        }
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', function () {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('currentUser');
+                sessionStorage.removeItem('userSession');
+                window.location.href = 'login.html';
+            }
+        });
+
+        // Close modals when clicking outside
+        window.onclick = function (event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function () {
+            checkAuth();
+            updateNotifications();
+        });
+    </script>
+</body>
+
+</html>

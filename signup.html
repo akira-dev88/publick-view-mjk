@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Manithaneya Jananayaga Katchi (MJK)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap">
+    <style>
+        :root {
+            --primary-red: #A31D22;
+            --primary-blue: #1A1A1A;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+        
+        h1, h2, h3, h4, h5, .font-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-red);
+            color: white;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: #b51f1f;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            font-weight: 600;
+            padding: 10px 26px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .form-input {
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 12px 16px;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus {
+            border-color: var(--primary-red);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(163, 29, 34, 0.1);
+        }
+        
+        .error-message {
+            color: #dc2626;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        
+        .success-message {
+            color: #16a34a;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        
+        .loader {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--primary-red);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg border-b border-gray-200">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <img src="mjklogo.jpg" alt="MJK Logo" class="w-14 h-14">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900 font-heading">MJK</h1>
+                        <p class="text-sm text-gray-600 font-medium">Manithaneya Jananayaga Katchi</p>
+                    </div>
+                </div>
+                <div>
+                    <a href="index.html" class="btn-outline">
+                        <i class="fas fa-home mr-2"></i> Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900">
+                    Create Your Account
+                </h2>
+                <p class="mt-2 text-sm text-gray-600">
+                    Join our community to access exclusive content, participate in discussions, and support our movement.
+                </p>
+                <div class="mt-4 flex items-center justify-center space-x-4">
+                    <div class="h-px bg-gray-300 w-16"></div>
+                    <span class="text-gray-500">Sign up as</span>
+                    <div class="h-px bg-gray-300 w-16"></div>
+                </div>
+            </div>
+
+            <!-- User Type Selection -->
+            <div class="grid grid-cols-3 gap-4 mb-8">
+                <button id="memberType" data-type="member" class="p-4 border-2 border-gray-300 rounded-xl text-center transition-all hover:border-red-500 hover:bg-red-50 active-user-type">
+                    <i class="fas fa-user text-2xl text-gray-600 mb-2"></i>
+                    <div class="font-medium text-gray-900">Member</div>
+                    <div class="text-xs text-gray-500 mt-1">Party Member</div>
+                </button>
+                <button id="supporterType" data-type="supporter" class="p-4 border-2 border-gray-300 rounded-xl text-center transition-all hover:border-red-500 hover:bg-red-50">
+                    <i class="fas fa-hands-helping text-2xl text-gray-600 mb-2"></i>
+                    <div class="font-medium text-gray-900">Supporter</div>
+                    <div class="text-xs text-gray-500 mt-1">General Supporter</div>
+                </button>
+                <button id="volunteerType" data-type="volunteer" class="p-4 border-2 border-gray-300 rounded-xl text-center transition-all hover:border-red-500 hover:bg-red-50">
+                    <i class="fas fa-users text-2xl text-gray-600 mb-2"></i>
+                    <div class="font-medium text-gray-900">Volunteer</div>
+                    <div class="text-xs text-gray-500 mt-1">Active Volunteer</div>
+                </button>
+            </div>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="mt-8 space-y-6">
+                <div id="formMessages" class="hidden p-4 rounded-lg mb-6"></div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">
+                            First Name *
+                        </label>
+                        <input id="firstName" name="firstName" type="text" required 
+                               class="form-input" placeholder="Enter your first name">
+                        <div id="firstNameError" class="error-message"></div>
+                    </div>
+                    
+                    <div>
+                        <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">
+                            Last Name *
+                        </label>
+                        <input id="lastName" name="lastName" type="text" required 
+                               class="form-input" placeholder="Enter your last name">
+                        <div id="lastNameError" class="error-message"></div>
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+                        Email Address *
+                    </label>
+                    <input id="email" name="email" type="email" required 
+                           class="form-input" placeholder="you@example.com">
+                    <div id="emailError" class="error-message"></div>
+                </div>
+                
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">
+                        Phone Number *
+                    </label>
+                    <input id="phone" name="phone" type="tel" required 
+                           class="form-input" placeholder="+91 XXX XXX XXXX">
+                    <div id="phoneError" class="error-message"></div>
+                </div>
+                
+                <div>
+                    <label for="district" class="block text-sm font-medium text-gray-700 mb-1">
+                        District *
+                    </label>
+                    <select id="district" name="district" required class="form-input">
+                        <option value="">Select your district</option>
+                        <option value="Chennai">Chennai</option>
+                        <option value="Coimbatore">Coimbatore</option>
+                        <option value="Madurai">Madurai</option>
+                        <option value="Tiruchirappalli">Tiruchirappalli</option>
+                        <option value="Salem">Salem</option>
+                        <option value="Tirunelveli">Tirunelveli</option>
+                        <option value="Vellore">Vellore</option>
+                        <option value="Erode">Erode</option>
+                        <option value="Thoothukudi">Thoothukudi</option>
+                        <option value="Dindigul">Dindigul</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <div id="districtError" class="error-message"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">
+                            Password *
+                        </label>
+                        <div class="relative">
+                            <input id="password" name="password" type="password" required 
+                                   class="form-input pr-10" placeholder="Create a password">
+                            <button type="button" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500" onclick="togglePassword('password')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div id="passwordError" class="error-message"></div>
+                        <div class="mt-2 text-xs text-gray-500">
+                            Must be at least 8 characters with uppercase, lowercase, number, and special character
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-1">
+                            Confirm Password *
+                        </label>
+                        <div class="relative">
+                            <input id="confirmPassword" name="confirmPassword" type="password" required 
+                                   class="form-input pr-10" placeholder="Confirm your password">
+                            <button type="button" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500" onclick="togglePassword('confirmPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div id="confirmPasswordError" class="error-message"></div>
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="referralCode" class="block text-sm font-medium text-gray-700 mb-1">
+                        Referral Code (Optional)
+                    </label>
+                    <input id="referralCode" name="referralCode" type="text" 
+                           class="form-input" placeholder="Enter referral code if any">
+                </div>
+                
+                <!-- Additional Fields (Visible based on user type) -->
+                <div id="memberFields" class="space-y-6 hidden">
+                    <div class="border-t border-gray-200 pt-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-4">Additional Member Information</h4>
+                        
+                        <div>
+                            <label for="memberId" class="block text-sm font-medium text-gray-700 mb-1">
+                                Member ID (If applicable)
+                            </label>
+                            <input id="memberId" name="memberId" type="text" 
+                                   class="form-input" placeholder="Enter your member ID">
+                        </div>
+                        
+                        <div class="mt-4">
+                            <label for="joinDate" class="block text-sm font-medium text-gray-700 mb-1">
+                                Membership Start Date
+                            </label>
+                            <input id="joinDate" name="joinDate" type="date" 
+                                   class="form-input">
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="volunteerFields" class="space-y-6 hidden">
+                    <div class="border-t border-gray-200 pt-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-4">Volunteer Information</h4>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="volunteerArea" class="block text-sm font-medium text-gray-700 mb-1">
+                                    Area of Interest
+                                </label>
+                                <select id="volunteerArea" name="volunteerArea" class="form-input">
+                                    <option value="">Select area</option>
+                                    <option value="campaigning">Campaigning</option>
+                                    <option value="outreach">Community Outreach</option>
+                                    <option value="events">Event Management</option>
+                                    <option value="social_media">Social Media</option>
+                                    <option value="content">Content Creation</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="availability" class="block text-sm font-medium text-gray-700 mb-1">
+                                    Weekly Availability (hours)
+                                </label>
+                                <select id="availability" name="availability" class="form-input">
+                                    <option value="">Select hours</option>
+                                    <option value="1-5">1-5 hours</option>
+                                    <option value="5-10">5-10 hours</option>
+                                    <option value="10-20">10-20 hours</option>
+                                    <option value="20+">20+ hours</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terms and Conditions -->
+                <div class="flex items-start">
+                    <div class="flex items-center h-5">
+                        <input id="terms" name="terms" type="checkbox" required 
+                               class="w-4 h-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
+                    </div>
+                    <div class="ml-3">
+                        <label for="terms" class="text-sm text-gray-700">
+                            I agree to the 
+                            <a href="#" class="font-medium text-red-600 hover:text-red-500">Terms of Service</a> 
+                            and 
+                            <a href="#" class="font-medium text-red-600 hover:text-red-500">Privacy Policy</a>.
+                            I confirm that I am an Indian citizen and will comply with all applicable laws.
+                        </label>
+                        <div id="termsError" class="error-message"></div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between">
+                    <div class="text-sm">
+                        Already have an account? 
+                        <a href="login.html" class="font-medium text-red-600 hover:text-red-500">
+                            Sign in here
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" id="submitBtn" class="group relative w-full btn-primary flex justify-center items-center">
+                        <span id="submitText">Create Account</span>
+                        <div id="submitLoader" class="loader ml-3"></div>
+                    </button>
+                </div>
+                
+                <div class="text-center text-sm text-gray-500">
+                    By signing up, you'll receive updates about party activities, events, and campaigns.
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <p>&copy; 2026 Manithaneya Jananayaga Katchi. All rights reserved.</p>
+                <p class="text-gray-400 text-sm mt-2">Registered with Election Commission of India</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // User Type Selection
+        const userTypeButtons = document.querySelectorAll('[id$="Type"]');
+        const memberFields = document.getElementById('memberFields');
+        const volunteerFields = document.getElementById('volunteerFields');
+        let selectedUserType = 'member';
+
+        userTypeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                userTypeButtons.forEach(btn => {
+                    btn.classList.remove('active-user-type', 'border-red-500', 'bg-red-50');
+                    btn.classList.add('border-gray-300');
+                });
+                
+                // Add active class to clicked button
+                button.classList.add('active-user-type', 'border-red-500', 'bg-red-50');
+                button.classList.remove('border-gray-300');
+                
+                // Update icon color
+                const icon = button.querySelector('i');
+                icon.classList.remove('text-gray-600');
+                icon.classList.add('text-red-600');
+                
+                // Reset other icons
+                userTypeButtons.forEach(btn => {
+                    if (btn !== button) {
+                        const otherIcon = btn.querySelector('i');
+                        otherIcon.classList.remove('text-red-600');
+                        otherIcon.classList.add('text-gray-600');
+                    }
+                });
+                
+                // Get selected type
+                selectedUserType = button.getAttribute('data-type');
+                
+                // Show/hide additional fields
+                if (selectedUserType === 'member') {
+                    memberFields.classList.remove('hidden');
+                    volunteerFields.classList.add('hidden');
+                } else if (selectedUserType === 'volunteer') {
+                    volunteerFields.classList.remove('hidden');
+                    memberFields.classList.add('hidden');
+                } else {
+                    memberFields.classList.add('hidden');
+                    volunteerFields.classList.add('hidden');
+                }
+            });
+        });
+
+        // Password toggle function
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            const icon = field.nextElementSibling.querySelector('i');
+            
+            if (field.type === 'password') {
+                field.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                field.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        // Form Validation
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function validatePhone(phone) {
+            const re = /^[\+]?[1-9][\d]{0,15}$/;
+            return re.test(phone.replace(/\D/g, ''));
+        }
+
+        function validatePassword(password) {
+            // At least 8 characters, 1 uppercase, 1 lowercase, 1 number, 1 special character
+            const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            return re.test(password);
+        }
+
+        // Form Submission
+        document.getElementById('signupForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Reset errors
+            document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+            document.querySelectorAll('.form-input').forEach(el => el.classList.remove('border-red-500'));
+            
+            // Get form values
+            const formData = {
+                firstName: document.getElementById('firstName').value.trim(),
+                lastName: document.getElementById('lastName').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                district: document.getElementById('district').value,
+                password: document.getElementById('password').value,
+                confirmPassword: document.getElementById('confirmPassword').value,
+                referralCode: document.getElementById('referralCode').value.trim(),
+                userType: selectedUserType,
+                terms: document.getElementById('terms').checked,
+                memberId: document.getElementById('memberId')?.value.trim() || '',
+                joinDate: document.getElementById('joinDate')?.value || '',
+                volunteerArea: document.getElementById('volunteerArea')?.value || '',
+                availability: document.getElementById('availability')?.value || ''
+            };
+            
+            let isValid = true;
+            
+            // Validate required fields
+            if (!formData.firstName) {
+                showError('firstName', 'First name is required');
+                isValid = false;
+            }
+            
+            if (!formData.lastName) {
+                showError('lastName', 'Last name is required');
+                isValid = false;
+            }
+            
+            if (!formData.email) {
+                showError('email', 'Email is required');
+                isValid = false;
+            } else if (!validateEmail(formData.email)) {
+                showError('email', 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            if (!formData.phone) {
+                showError('phone', 'Phone number is required');
+                isValid = false;
+            } else if (!validatePhone(formData.phone)) {
+                showError('phone', 'Please enter a valid phone number');
+                isValid = false;
+            }
+            
+            if (!formData.district) {
+                showError('district', 'Please select your district');
+                isValid = false;
+            }
+            
+            if (!formData.password) {
+                showError('password', 'Password is required');
+                isValid = false;
+            } else if (!validatePassword(formData.password)) {
+                showError('password', 'Password must be at least 8 characters with uppercase, lowercase, number, and special character');
+                isValid = false;
+            }
+            
+            if (!formData.confirmPassword) {
+                showError('confirmPassword', 'Please confirm your password');
+                isValid = false;
+            } else if (formData.password !== formData.confirmPassword) {
+                showError('confirmPassword', 'Passwords do not match');
+                isValid = false;
+            }
+            
+            if (!formData.terms) {
+                showError('terms', 'You must agree to the terms and conditions');
+                isValid = false;
+            }
+            
+            if (!isValid) return;
+            
+            // Show loading state
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const submitLoader = document.getElementById('submitLoader');
+            
+            submitBtn.disabled = true;
+            submitText.textContent = 'Creating Account...';
+            submitLoader.style.display = 'block';
+            
+            // Simulate API call (in real implementation, this would be a fetch request)
+            setTimeout(() => {
+                // For demo purposes, we'll simulate success
+                submitBtn.disabled = false;
+                submitText.textContent = 'Create Account';
+                submitLoader.style.display = 'none';
+                
+                // Show success message
+                showMessage('Account created successfully! Redirecting to login...', 'success');
+                
+                // Store user data in localStorage (for demo purposes)
+                const userData = {
+                    ...formData,
+                    id: Date.now(),
+                    createdAt: new Date().toISOString(),
+                    profileComplete: false,
+                    contributions: [],
+                    posts: [],
+                    comments: [],
+                    likes: [],
+                    avatar: null
+                };
+                
+                // Remove password from stored data
+                delete userData.password;
+                delete userData.confirmPassword;
+                
+                // Store in localStorage
+                localStorage.setItem('userData', JSON.stringify(userData));
+                localStorage.setItem('userEmail', formData.email);
+                
+                // Redirect to login page after 2 seconds
+                setTimeout(() => {
+                    window.location.href = 'login.html?signup=success';
+                }, 2000);
+                
+            }, 2000);
+        });
+
+        function showError(fieldId, message) {
+            const errorElement = document.getElementById(fieldId + 'Error');
+            const inputElement = document.getElementById(fieldId);
+            
+            if (errorElement) {
+                errorElement.textContent = message;
+            }
+            
+            if (inputElement) {
+                inputElement.classList.add('border-red-500');
+            }
+        }
+
+        function showMessage(message, type = 'error') {
+            const messagesDiv = document.getElementById('formMessages');
+            messagesDiv.className = type === 'error' ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700';
+            messagesDiv.textContent = message;
+            messagesDiv.classList.remove('hidden');
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                messagesDiv.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Initialize with member type selected
+        document.getElementById('memberType').click();
+    </script>
+</body>
+</html>

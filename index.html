@@ -1,0 +1,3011 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manithaneya Jananayaga Katchi (MJK) - Tamil Nadu</title>
+    <link rel="icon" href="mjklogo.jpg" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+
+    <style>
+        :root {
+            --primary-red: #A31D22;
+            --primary-blue: #1A1A1A;
+            --neutral-white: #ffffff;
+            --neutral-black: #1a1a1a;
+            --neutral-gray: #F4F4F4;
+            --success-green: #2e8b57;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--neutral-black);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        .font-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .nav-active {
+            color: var(--primary-red) !important;
+            position: relative;
+        }
+
+        .nav-active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-red);
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-red);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-gradient {
+            background-color: var(--primary-red);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-red);
+            color: white;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #b51f1f;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: #00243a;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            font-weight: 600;
+            padding: 10px 26px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .policy-tab.active {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 9999;
+            overflow-y: auto;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 12px;
+            animation: slideIn 0.4s;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--primary-red);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--primary-red);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 21px;
+            width: 2px;
+            height: calc(100% + 10px);
+            background-color: #e5e5e5;
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .donation-option:hover {
+            transform: scale(1.05);
+            border-color: var(--primary-red);
+        }
+
+        .election-badge {
+            background: var(--primary-red);
+        }
+
+        .news-card {
+            border-left: 5px solid var(--primary-red);
+            transition: all 0.3s;
+        }
+
+        .news-card:hover {
+            border-left-color: var(--primary-blue);
+        }
+
+        .candidate-card {
+            border-top: 5px solid var(--primary-blue);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .candidate-card:hover {
+            border-top-color: var(--primary-red);
+        }
+
+        /* Mobile Responsive Enhancements */
+        @media (max-width: 768px) {
+
+            /* General mobile adjustments */
+            .section-title {
+                text-align: center;
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+
+            .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.75rem;
+            }
+
+            h4 {
+                font-size: 1.5rem;
+            }
+
+            /* Button adjustments */
+            .btn-primary,
+            .btn-secondary,
+            .btn-outline {
+                padding: 10px 20px;
+                font-size: 14px;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+
+            /* Hero Section */
+            #home .grid {
+                gap: 30px;
+            }
+
+            #home h1 {
+                font-size: 2.2rem;
+            }
+
+            #home p {
+                font-size: 1.1rem;
+                line-height: 1.6;
+            }
+
+            /* Quick Stats */
+            .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 {
+                gap: 15px;
+            }
+
+            .bg-white.rounded-2xl.shadow-lg.p-8 {
+                padding: 20px;
+            }
+
+            .text-5xl {
+                font-size: 2.5rem;
+            }
+
+            /* About Section */
+            #about .grid {
+                gap: 40px;
+            }
+
+            .p-6.bg-\[\#F4F4F4\].rounded-2xl {
+                padding: 20px;
+            }
+
+            .timeline-item {
+                padding-left: 25px;
+                margin-bottom: 25px;
+            }
+
+            /* Leadership Section */
+            .max-w-4xl.mx-auto .md\:flex {
+                flex-direction: column;
+            }
+
+            .max-w-4xl.mx-auto .md\:w-2\/5 {
+                width: 100%;
+                padding: 30px 20px;
+            }
+
+            .max-w-4xl.mx-auto .md\:w-3\/5 {
+                width: 100%;
+                padding: 20px;
+            }
+
+            /* Manifesto Section */
+            #manifesto .grid {
+                gap: 30px;
+            }
+
+            .bg-\[\#1A1A1A\].text-white.p-10.rounded-3xl.mb-12 {
+                padding: 25px;
+            }
+
+            .text-4xl {
+                font-size: 2rem;
+            }
+
+            /* Candidates Section */
+            #candidates .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+                gap: 25px;
+            }
+
+            .candidate-card .p-8 {
+                padding: 25px;
+            }
+
+            /* News & Media Section */
+            #news .space-y-8 {
+                gap: 30px;
+            }
+
+            .news-card.bg-white.p-6.md\:p-8.rounded-2xl {
+                padding: 25px;
+            }
+
+            .flex.flex-col.lg\:flex-row.gap-6.mb-6 {
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .lg\:w-2\/5,
+            .lg\:w-3\/5 {
+                width: 100%;
+            }
+
+            .relative.h-48.lg\:h-full {
+                height: 250px;
+            }
+
+            /* Media Gallery */
+            .grid.grid-cols-1.sm\:grid-cols-2.md\:grid-cols-4 {
+                gap: 15px;
+            }
+
+            .relative.h-48.w-full {
+                height: 200px;
+            }
+
+            /* Get Involved Section */
+            #involve .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+                gap: 20px;
+            }
+
+            .bg-white\/10.backdrop-blur-sm.p-10.rounded-3xl {
+                padding: 25px;
+            }
+
+            /* Donate Section */
+            #donate .grid {
+                gap: 30px;
+            }
+
+            .grid.grid-cols-1.md\:grid-cols-3.gap-8 {
+                gap: 20px;
+            }
+
+            .donation-option.border-2.border-gray-300.rounded-3xl.p-8 {
+                padding: 25px;
+            }
+
+            /* Election Information Center */
+            #vote-info .grid.grid-cols-1.md\:grid-cols-3 {
+                gap: 20px;
+            }
+
+            /* Footer */
+            .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 {
+                gap: 30px;
+            }
+
+            /* Modal adjustments */
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+            }
+
+            .modal-content .p-8 {
+                padding: 25px;
+            }
+
+            /* Text sizing adjustments */
+            .text-xl {
+                font-size: 1.1rem;
+            }
+
+            .text-lg {
+                font-size: 1rem;
+            }
+
+            .text-sm {
+                font-size: 0.9rem;
+            }
+
+            /* Spacing adjustments */
+            .py-24 {
+                padding-top: 60px;
+                padding-bottom: 60px;
+            }
+
+            .mb-16 {
+                margin-bottom: 40px;
+            }
+
+            .mb-10,
+            .mb-12 {
+                margin-bottom: 25px;
+            }
+
+            /* Top Alert Bar */
+            .election-badge .container {
+                padding: 10px;
+            }
+
+            .election-badge .flex.flex-col.md\:flex-row {
+                text-align: center;
+            }
+
+            /* Navigation */
+            .nav-link {
+                padding: 12px 15px;
+                text-align: center;
+            }
+
+            /* Grid gap reductions */
+            .gap-12 {
+                gap: 30px;
+            }
+
+            .gap-8 {
+                gap: 20px;
+            }
+
+            .gap-6 {
+                gap: 15px;
+            }
+
+            /* Hide certain elements on mobile */
+            .hidden-mobile {
+                display: none;
+            }
+
+            /* Show certain elements only on mobile */
+            .mobile-only {
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            /* Extra small devices */
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            .text-5xl {
+                font-size: 2rem;
+            }
+
+            .text-4xl {
+                font-size: 1.75rem;
+            }
+
+            .py-24 {
+                padding-top: 40px;
+                padding-bottom: 40px;
+            }
+
+            .p-8,
+            .p-10 {
+                padding: 20px;
+            }
+
+            /* Candidate cards */
+            .candidate-card .h-56 {
+                height: 180px;
+            }
+
+            /* Media gallery */
+            .relative.h-48.w-full {
+                height: 150px;
+            }
+
+            .relative.h-48.lg\:h-full {
+                height: 200px;
+            }
+
+            /* Quick stats */
+            .bg-white.rounded-2xl.shadow-lg.p-8 {
+                padding: 15px;
+            }
+
+            /* Manifesto blocks */
+            .p-6.bg-white.border.border-gray-200.rounded-2xl {
+                padding: 20px;
+            }
+
+            /* Get involved cards */
+            .bg-white\/10.backdrop-blur-sm.p-10.rounded-3xl {
+                padding: 20px;
+            }
+        }
+
+        /* Add subtle grid pattern for placeholder backgrounds */
+        .bg-grid-pattern {
+            background-image:
+                linear-gradient(to right, currentColor 1px, transparent 1px),
+                linear-gradient(to bottom, currentColor 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Mobile menu improvements */
+        @media (max-width: 768px) {
+            #mobileMenu {
+                animation: slideDown 0.3s ease;
+            }
+
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+
+        /* Better touch targets for mobile */
+        @media (max-width: 768px) {
+
+            button,
+            a,
+            input,
+            select {
+                min-height: 44px;
+            }
+
+            .nav-link {
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        /* Media gallery hover text */
+        .media-text {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .group:hover .media-text {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Top Alert Bar - Mobile Responsive -->
+    <div class="election-badge text-white py-3 px-4">
+        <div class="container mx-auto px-2">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-2 md:mb-0 text-center md:text-left">
+                    <i class="fas fa-vote-yea mr-3 text-xl hidden sm:block"></i>
+                    <div>
+                        <span class="font-bold text-sm sm:text-base">ELECTION 2026: Early Voting Starts Oct 15 • </span>
+                        <span class="block sm:inline font-semibold text-sm">Register to Vote Today!</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3 sm:space-x-6 mt-2 md:mt-0">
+                    <a href="#vote-info" class="flex items-center text-white hover:text-yellow-200 font-medium text-sm">
+                        <i class="fas fa-map-marker-alt mr-1 sm:mr-2"></i>
+                        <span class="hidden sm:inline">Find Polling Booth</span>
+                        <span class="sm:hidden">Booth</span>
+                    </a>
+                    <a href="#manifesto" class="flex items-center text-white hover:text-yellow-200 font-medium text-sm">
+                        <i class="fas fa-file-alt mr-1 sm:mr-2"></i>
+                        <span class="hidden sm:inline">Read Manifesto</span>
+                        <span class="sm:hidden">Manifesto</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation - Mobile Optimized -->
+    <nav id="mainNav" class="sticky top-0 z-50 bg-white shadow-lg border-b border-gray-200">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <img src="mjklogo.jpg" alt="MJK Logo" class="w-12 h-12 sm:w-14 sm:h-14">
+                    <div>
+                        <h1 class="text-xl sm:text-2xl font-bold text-gray-900 font-heading">MJK</h1>
+                        <p class="text-xs sm:text-sm text-gray-600 font-medium">Manithaneya Jananayaga Katchi</p>
+                    </div>
+                </div>
+
+                <div class="hidden lg:flex items-center space-x-1">
+                    <a href="#home"
+                        class="nav-link px-5 py-3 font-medium text-gray-800 hover:text-[#A31D22] transition">Home</a>
+                    <a href="#about"
+                        class="nav-link px-5 py-3 font-medium text-gray-800 hover:text-[#A31D22] transition">About</a>
+                    <a href="#manifesto"
+                        class="nav-link px-5 py-3 font-medium text-gray-800 hover:text-[#A31D22] transition">Manifesto</a>
+                    <a href="#candidates"
+                        class="nav-link px-5 py-3 font-medium text-gray-800 hover:text-[#A31D22] transition">Candidates</a>
+                    <a href="#news"
+                        class="nav-link px-5 py-3 font-medium text-gray-800 hover:text-[#A31D22] transition">News</a>
+                    <a href="#involve"
+                        class="nav-link px-5 py-3 font-medium text-gray-800 hover:text-[#A31D22] transition">Get
+                        Involved</a>
+                    <a href="#donate" class="ml-4 btn-primary hidden sm:inline-flex">
+                        Donate
+                    </a>
+
+                    <a href="signup.html" class="btn-outline ml-4">
+                        <i class="fas fa-user-plus mr-2"></i> Sign Up
+                    </a>
+                    <a href="login.html" class="btn-outline ml-4">
+                        <i class="fas fa-sign-in-alt mr-2"></i> Login
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="menuToggle" class="lg:hidden text-gray-800 text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <div id="mobileMenu" class="hidden lg:hidden mt-4 border-t border-gray-200 pt-4">
+                <div class="flex flex-col space-y-2">
+                    <a href="#home"
+                        class="nav-link py-3 font-medium text-gray-800 hover:text-[#A31D22] text-center">Home</a>
+                    <a href="#about"
+                        class="nav-link py-3 font-medium text-gray-800 hover:text-[#A31D22] text-center">About</a>
+                    <a href="#manifesto"
+                        class="nav-link py-3 font-medium text-gray-800 hover:text-[#A31D22] text-center">Manifesto</a>
+                    <a href="#candidates"
+                        class="nav-link py-3 font-medium text-gray-800 hover:text-[#A31D22] text-center">Candidates</a>
+                    <a href="#news"
+                        class="nav-link py-3 font-medium text-gray-800 hover:text-[#A31D22] text-center">News</a>
+                    <a href="#involve"
+                        class="nav-link py-3 font-medium text-gray-800 hover:text-[#A31D22] text-center">Get
+                        Involved</a>
+                    <a href="#donate" class="btn-primary text-center mt-2 py-3">
+                        Donate
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home / Hero Section - Mobile Responsive -->
+        <section id="home" class="relative min-h-screen flex items-center bg-gray-100 text-gray-900 pt-16 sm:pt-0">
+            <div class="container mx-auto px-4 py-10 sm:py-20 relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="max-w-3xl order-2 md:order-1">
+                        <div
+                            class="inline-flex items-center px-4 py-2 bg-[#A31D22] text-white rounded-full mb-6 font-bold shadow-lg text-sm sm:text-base">
+                            <i class="fas fa-star mr-2"></i> ELECTION CAMPAIGN 2026
+                        </div>
+                        <h1
+                            class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight text-gray-900">
+                            <span style="color: #A31D22;">Manithaneya Jananayaga Katchi</span> <span
+                                class="text-gray-900 block sm:inline">(MJK)</span>
+                        </h1>
+                        <p class="text-base sm:text-lg md:text-xl mb-6 sm:mb-10 text-gray-700 max-w-2xl">
+                            Manithaneya Jananayaga Katchi (MJK) is a political party based in the state of Tamil
+                            Nadu, India. The party was formed with the objective of strengthening democratic values,
+                            social justice, and people-centric governance. MJK follows a principled political approach
+                            that emphasizes humanity, equality, and inclusive development.
+                        </p>
+                        <div class="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-5">
+                            <a href="#involve" class="btn-primary flex items-center justify-center">
+                                <i class="fas fa-user-plus mr-2 sm:mr-3"></i> Join the Movement
+                            </a>
+                            <a href="#manifesto" class="btn-secondary flex items-center justify-center">
+                                <i class="fas fa-book-open mr-2 sm:mr-3"></i> Read Our Manifesto
+                            </a>
+                            <button id="watchVideoBtn"
+                                class="btn-outline text-black border-black hover:bg-black hover:text-white flex items-center justify-center">
+                                <i class="fas fa-play-circle mr-2 sm:mr-3"></i> Watch Video
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex justify-center order-1 md:order-2 mb-8 md:mb-0">
+                        <img src="heroimage.jpeg" alt="MJK Hero Image" class="rounded-lg w-full max-w-screen">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Stats - Mobile Responsive -->
+        <section class="bg-gray-100 py-12 sm:py-20">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+                    <!-- Stat 1 -->
+                    <div
+                        class="bg-white rounded-xl sm:rounded-2xl shadow p-4 sm:p-8 text-center transform hover:scale-105 transition-transform duration-300 ease-in-out">
+                        <div
+                            class="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-[#A31D22] text-white rounded-full mx-auto mb-4 sm:mb-6">
+                            <i class="fas fa-history text-xl sm:text-2xl"></i>
+                        </div>
+                        <div
+                            class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-[#1A1A1A] mb-1 sm:mb-2">
+                            8+</div>
+                        <div class="text-sm sm:text-base lg:text-lg font-semibold text-gray-600">Years of Service</div>
+                    </div>
+                    <!-- Stat 2 -->
+                    <div
+                        class="bg-white rounded-xl sm:rounded-2xl shadow p-4 sm:p-8 text-center transform hover:scale-105 transition-transform duration-300 ease-in-out">
+                        <div
+                            class="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-[#A31D22] text-white rounded-full mx-auto mb-4 sm:mb-6">
+                            <i class="fas fa-map-marked-alt text-xl sm:text-2xl"></i>
+                        </div>
+                        <div
+                            class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-[#1A1A1A] mb-1 sm:mb-2">
+                            32</div>
+                        <div class="text-sm sm:text-base lg:text-lg font-semibold text-gray-600">District Offices</div>
+                    </div>
+                    <!-- Stat 3 -->
+                    <div
+                        class="bg-white rounded-xl sm:rounded-2xl shadow p-4 sm:p-8 text-center transform hover:scale-105 transition-transform duration-300 ease-in-out">
+                        <div
+                            class="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-[#A31D22] text-white rounded-full mx-auto mb-4 sm:mb-6">
+                            <i class="fas fa-users text-xl sm:text-2xl"></i>
+                        </div>
+                        <div
+                            class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-[#1A1A1A] mb-1 sm:mb-2">
+                            5</div>
+                        <div class="text-sm sm:text-base lg:text-lg font-semibold text-gray-600">Active Wings</div>
+                    </div>
+                    <!-- Stat 4 -->
+                    <div
+                        class="bg-white rounded-xl sm:rounded-2xl shadow p-4 sm:p-8 text-center transform hover:scale-105 transition-transform duration-300 ease-in-out">
+                        <div
+                            class="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-[#A31D22] text-white rounded-full mx-auto mb-4 sm:mb-6">
+                            <i class="fas fa-globe-asia text-xl sm:text-2xl"></i>
+                        </div>
+                        <div
+                            class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-[#1A1A1A] mb-1 sm:mb-2">
+                            234+</div>
+                        <div class="text-sm sm:text-base lg:text-lg font-semibold text-gray-600">Taluks Covered</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About the Party - Mobile Responsive -->
+        <section id="about" class="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="section-title text-3xl sm:text-4xl font-bold text-gray-900 text-center sm:text-left">About
+                    the Party</h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 md:gap-16">
+                    <div>
+                        <div class="mb-8 sm:mb-10">
+                            <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">About Manithaneya
+                                Jananayaga Katchi (MJK)
+                            </h3>
+                            <p class="text-gray-700 text-base sm:text-lg mb-4 sm:mb-6">
+                                Manithaneya Jananayaga Katchi (MJK) is a political party based in the state of Tamil
+                                Nadu, India. The party was formed with the objective of strengthening democratic values,
+                                social justice, and people-centric governance. MJK follows a principled political
+                                approach that emphasizes humanity, equality, and inclusive development.
+                            </p>
+                            <p class="text-gray-700 text-base sm:text-lg mb-6">
+                                The party emerged in <strong>February 2016</strong>, marking the beginning of a new
+                                political movement
+                                that focuses on addressing real issues faced by common people, especially at the
+                                grassroots level. Headquartered in <strong>Chennai</strong>, MJK has been actively
+                                involved in Tamil
+                                Nadu's political landscape since its formation.
+                            </p>
+                        </div>
+
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">Vision & Mission</h3>
+                        <div class="space-y-6">
+                            <div class="p-4 sm:p-6 bg-[#F4F4F4] rounded-xl sm:rounded-2xl border-l-4 border-[#A31D22]">
+                                <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 flex items-center">
+                                    <i class="fas fa-eye text-[#A31D22] mr-2 sm:mr-3"></i> Vision
+                                </h4>
+                                <p class="text-gray-700 text-sm sm:text-base">To create a just, inclusive, and
+                                    democratic Tamil Nadu where
+                                    governance is guided by humanity, equality, and constitutional values.</p>
+                            </div>
+
+                            <div class="p-4 sm:p-6 bg-[#F4F4F4] rounded-xl sm:rounded-2xl border-l-4 border-[#1A1A1A]">
+                                <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 flex items-center">
+                                    <i class="fas fa-bullseye text-[#1A1A1A] mr-2 sm:mr-3"></i> Mission
+                                </h4>
+                                <p class="text-gray-700 text-sm sm:text-base">To serve the people through ethical
+                                    politics, protect
+                                    democratic rights, promote social harmony, and ensure inclusive development that
+                                    reaches every citizen.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">Ideology & Values</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-12">
+                            <div
+                                class="flex items-start p-4 sm:p-5 bg-gray-50 rounded-lg sm:rounded-xl border border-gray-200">
+                                <div
+                                    class="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-[#F4F4F4] text-[#A31D22] rounded-lg sm:rounded-xl mr-3 sm:mr-4">
+                                    <i class="fas fa-heart text-lg sm:text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-base sm:text-lg mb-1 sm:mb-2">Humanity First
+                                    </h4>
+                                    <p class="text-gray-600 text-sm sm:text-base">Politics as a service to people</p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="flex items-start p-4 sm:p-5 bg-gray-50 rounded-lg sm:rounded-xl border border-gray-200">
+                                <div
+                                    class="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-[#F4F4F4] text-[#1A1A1A] rounded-lg sm:rounded-xl mr-3 sm:mr-4">
+                                    <i class="fas fa-balance-scale text-lg sm:text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-base sm:text-lg mb-1 sm:mb-2">Social Justice
+                                    </h4>
+                                    <p class="text-gray-600 text-sm sm:text-base">Equality and fairness for all
+                                        communities</p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="flex items-start p-4 sm:p-5 bg-gray-50 rounded-lg sm:rounded-xl border border-gray-200">
+                                <div
+                                    class="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-[#F4F4F4] text-[#1A1A1A] rounded-lg sm:rounded-xl mr-3 sm:mr-4">
+                                    <i class="fas fa-shield-alt text-lg sm:text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-base sm:text-lg mb-1 sm:mb-2">Democratic
+                                        Integrity</h4>
+                                    <p class="text-gray-600 text-sm sm:text-base">Respect for the Constitution and rule
+                                        of law</p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="flex items-start p-4 sm:p-5 bg-gray-50 rounded-lg sm:rounded-xl border border-gray-200">
+                                <div
+                                    class="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-[#F4F4F4] text-[#1A1A1A] rounded-lg sm:rounded-xl mr-3 sm:mr-4">
+                                    <i class="fas fa-hands-helping text-lg sm:text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-base sm:text-lg mb-1 sm:mb-2">Unity &
+                                        Harmony</h4>
+                                    <p class="text-gray-600 text-sm sm:text-base">Peaceful coexistence among all
+                                        sections of society</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">Party History</h3>
+                        <div class="space-y-6 sm:space-y-8">
+                            <div class="timeline-item">
+                                <div class="flex items-center mb-2">
+                                    <div
+                                        class="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-[#A31D22] text-white rounded-full mr-3">
+                                        <i class="fas fa-flag text-sm sm:text-base"></i>
+                                    </div>
+                                    <h4 class="text-lg sm:text-xl font-bold text-gray-900">February 2016 - Foundation
+                                    </h4>
+                                </div>
+                                <p class="text-gray-700 text-sm sm:text-base">Manithaneya Jananayaga Katchi was
+                                    established with the aim of
+                                    offering a principled alternative in Tamil Nadu politics, focusing on
+                                    people-centered governance.</p>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="flex items-center mb-2">
+                                    <div
+                                        class="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-[#1A1A1A] text-white rounded-full mr-3">
+                                        <i class="fas fa-vote-yea text-sm sm:text-base"></i>
+                                    </div>
+                                    <h4 class="text-lg sm:text-xl font-bold text-gray-900">2016 - Legislative
+                                        Representation</h4>
+                                </div>
+                                <p class="text-gray-700 text-sm sm:text-base">In the 2016 Tamil Nadu Legislative
+                                    Assembly Elections, the
+                                    party gained legislative representation, marking an important milestone in its
+                                    political journey.</p>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="flex items-center mb-2">
+                                    <div
+                                        class="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-[#A31D22] text-white rounded-full mr-3">
+                                        <i class="fas fa-expand-arrows-alt text-sm sm:text-base"></i>
+                                    </div>
+                                    <h4 class="text-lg sm:text-xl font-bold text-gray-900">2017-2021 - Organizational
+                                        Growth</h4>
+                                </div>
+                                <p class="text-gray-700 text-sm sm:text-base">Party expanded its presence across Tamil
+                                    Nadu, establishing
+                                    district committees and engaging in public advocacy and community development.</p>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="flex items-center mb-2">
+                                    <div
+                                        class="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-[#1A1A1A] text-white rounded-full mr-3">
+                                        <i class="fas fa-handshake text-sm sm:text-base"></i>
+                                    </div>
+                                    <h4 class="text-lg sm:text-xl font-bold text-gray-900">2022-Present - Strengthening
+                                        Democratic
+                                        Participation</h4>
+                                </div>
+                                <p class="text-gray-700 text-sm sm:text-base">Continued engagement in public life
+                                    through political
+                                    participation, advocacy, and organizational development across the state.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership - Mobile Responsive -->
+        <section class="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-white">
+            <div class="container mx-auto px-4">
+                <h2 class="section-title text-3xl sm:text-4xl font-bold text-gray-900 text-center sm:text-left">
+                    Leadership</h2>
+                <p class="text-gray-700 text-base sm:text-lg md:text-xl mb-10 sm:mb-16 max-w-3xl">Meet the dedicated
+                    leaders guiding our party toward a
+                    better future for all citizens.</p>
+
+                <div class="mb-12 sm:mb-16 md:mb-20">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8 sm:mb-12">Party President &
+                        Chairperson</h3>
+                    <div class="max-w-4xl mx-auto">
+                        <div class="bg-white rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden card-hover">
+                            <div class="md:flex">
+                                <div class="md:w-2/5 relative bg-cover bg-center group"
+                                    style="background-image: url('profile.jpeg');">
+                                    <div
+                                        class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    </div>
+                                    <div
+                                        class="relative p-6 sm:p-8 md:p-10 flex flex-col items-center justify-end h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        <div class="text-white text-center">
+                                            <h4 class="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">Mr. M.
+                                                Thameemun Ansari</h4>
+                                            <p class="text-base sm:text-lg md:text-xl opacity-90">Founder & President
+                                            </p>
+                                            <div class="flex justify-center space-x-3 sm:space-x-4 mt-4 sm:mt-6">
+
+                                                <!-- X (Twitter) -->
+                                                <a href="#"
+                                                    class="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition">
+                                                    <i class="fa-brands fa-x-twitter"></i>
+                                                </a>
+
+                                                <!-- LinkedIn -->
+                                                <a href="#"
+                                                    class="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition">
+                                                    <i class="fa-brands fa-linkedin"></i>
+                                                </a>
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="md:w-3/5 p-6 sm:p-8 md:p-10">
+                                    <div class="flex items-center mb-4 sm:mb-6">
+                                        <div
+                                            class="w-10 h-10 sm:w-12 sm:h-12 bg-[#F4F4F4] rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                                            <i class="fas fa-gavel text-[#A31D22] text-lg sm:text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-bold text-gray-800 text-sm sm:text-base md:text-lg">Former
+                                                Member of Legislative Assembly</h5>
+                                            <p class="text-gray-600 text-xs sm:text-sm md:text-base">Nagapattinam
+                                                Constituency (2016-2021)</p>
+                                        </div>
+                                    </div>
+
+                                    <p class="text-gray-700 text-sm sm:text-base md:text-lg mb-6 sm:mb-8">
+                                        Mr. M. Thameemun Ansari is a senior political leader and the founding force
+                                        behind
+                                        Manithaneya Jananayaga Katchi. He is known for his principled political
+                                        approach, focus on
+                                        social justice, and commitment to democratic and constitutional values.
+                                    </p>
+
+                                    <div class="grid grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
+                                        <div class="bg-gray-50 p-3 sm:p-4 rounded-lg sm:rounded-xl">
+                                            <div class="text-xl sm:text-2xl font-bold text-[#A31D22] mb-1">8+</div>
+                                            <div class="text-gray-700 font-medium text-xs sm:text-sm">Years of
+                                                Leadership</div>
+                                        </div>
+                                        <div class="bg-gray-50 p-3 sm:p-4 rounded-lg sm:rounded-xl">
+                                            <div class="text-xl sm:text-2xl font-bold text-[#1A1A1A] mb-1">5</div>
+                                            <div class="text-gray-700 font-medium text-xs sm:text-sm">Years as MLA</div>
+                                        </div>
+                                    </div>
+
+                                    <button class="btn-primary text-sm sm:text-base">
+                                        <i class="fas fa-user-circle mr-2"></i> Full Biography
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 sm:mb-10">Executive Committee</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                    <div class="bg-white rounded-xl sm:rounded-2xl shadow-lg p-6 sm:p-8 text-center card-hover">
+                        <div
+                            class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-[#1A1A1A] rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center">
+                            <i class="fas fa-users text-3xl sm:text-4xl md:text-5xl text-white"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-lg sm:text-xl mb-1 sm:mb-2">Executive Committee</h4>
+                        <p class="text-gray-600 font-medium text-sm sm:text-base mb-2 sm:mb-4">Primary Decision-Making
+                            Body</p>
+                        <p class="text-gray-600 text-xs sm:text-sm mb-4 sm:mb-6">Formulates party policies and
+                            strategies, oversees
+                            organizational administration</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl sm:rounded-2xl shadow-lg p-6 sm:p-8 text-center card-hover">
+                        <div
+                            class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-[#A31D22] rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center">
+                            <i class="fas fa-map-marker-alt text-3xl sm:text-4xl md:text-5xl text-white"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-lg sm:text-xl mb-1 sm:mb-2">State Leadership</h4>
+                        <p class="text-gray-600 font-medium text-sm sm:text-base mb-2 sm:mb-4">State-Level Coordination
+                        </p>
+                        <p class="text-gray-600 text-xs sm:text-sm mb-4 sm:mb-6">Oversees party activities across Tamil
+                            Nadu, implements
+                            policies, and leads statewide programs</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl sm:rounded-2xl shadow-lg p-6 sm:p-8 text-center card-hover">
+                        <div
+                            class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-[#1A1A1A] rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center">
+                            <i class="fas fa-building text-3xl sm:text-4xl md:text-5xl text-white"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-lg sm:text-xl mb-1 sm:mb-2">District Leadership</h4>
+                        <p class="text-gray-600 font-medium text-sm sm:text-base mb-2 sm:mb-4">District-Level Management
+                        </p>
+                        <p class="text-gray-600 text-xs sm:text-sm mb-4 sm:mb-6">Manages district-level operations,
+                            public outreach, and
+                            coordination with local units</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl sm:rounded-2xl shadow-lg p-6 sm:p-8 text-center card-hover">
+                        <div
+                            class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-[#A31D22] rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center">
+                            <i class="fas fa-bullhorn text-3xl sm:text-4xl md:text-5xl text-white"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-lg sm:text-xl mb-1 sm:mb-2">District Secretaries</h4>
+                        <p class="text-gray-600 font-medium text-sm sm:text-base mb-2 sm:mb-4">Official Party
+                            Spokespersons</p>
+                        <p class="text-gray-600 text-xs sm:text-sm mb-4 sm:mb-6">Represent the party in media and public
+                            discussions within
+                            their districts</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12 sm:mt-16">
+                    <button id="viewAllLeaders"
+                        class="btn-secondary px-6 sm:px-8 md:px-10 py-3 sm:py-4 text-sm sm:text-base md:text-lg">
+                        <i class="fas fa-users mr-2 sm:mr-3"></i> View All Leaders & Spokespersons
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Manifesto & Policies - Mobile Responsive -->
+        <section id="manifesto" class="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="section-title text-3xl sm:text-4xl font-bold text-gray-900 text-center sm:text-left">
+                    Manifesto & Policies</h2>
+                <p class="text-gray-700 text-base sm:text-lg md:text-xl mb-10 sm:mb-16 max-w-3xl">Our comprehensive plan
+                    for state renewal and
+                    progressive change across all sectors of society in Tamil Nadu.</p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
+                    <div class="lg:col-span-2">
+                        <!-- Manifesto Overview -->
+                        <div
+                            class="bg-[#1A1A1A] text-white p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl mb-8 sm:mb-10 md:mb-12 shadow-xl">
+                            <div class="flex flex-col md:flex-row items-center">
+                                <div class="md:w-2/3">
+                                    <div class="flex items-center mb-4 sm:mb-6">
+                                        <div
+                                            class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-[#A31D22] rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center mr-4 sm:mr-6">
+                                            <i class="fas fa-file-alt text-xl sm:text-2xl md:text-3xl"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold">2026 Election
+                                                Manifesto</h3>
+                                            <p class="text-base sm:text-lg md:text-xl opacity-90 mt-1 sm:mt-2">"A New
+                                                Deal for Tamil Nadu: Justice,
+                                                Opportunity, Sustainability"</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm sm:text-base md:text-lg opacity-90 mb-6 sm:mb-8">The manifesto of
+                                        Manithaneya Jananayaga Katchi
+                                        (MJK) reflects the party's commitment to people-centred governance, social
+                                        justice, and democratic integrity. It is built on real social and economic
+                                        concerns faced by citizens of Tamil Nadu and offers practical, responsible
+                                        solutions.</p>
+                                </div>
+                                <div class="md:w-1/3 mt-6 sm:mt-8 md:mt-0 text-center">
+                                    <div
+                                        class="inline-block p-4 sm:p-5 md:p-6 bg-white/10 rounded-lg sm:rounded-xl md:rounded-2xl backdrop-blur-sm">
+                                        <i class="fas fa-file-pdf text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4"></i>
+                                        <div class="font-bold text-lg sm:text-xl md:text-2xl">PDF Download</div>
+                                        <div class="text-xs sm:text-sm opacity-80 mt-1 sm:mt-2">Available in Tamil &
+                                            English</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mt-8 sm:mt-10">
+                                <button class="btn-primary flex items-center justify-center text-sm sm:text-base">
+                                    <i class="fas fa-download mr-2 sm:mr-3"></i> Download Full Manifesto
+                                </button>
+                                <button
+                                    class="btn-outline text-white border-white hover:bg-white hover:text-gray-900 flex items-center justify-center text-sm sm:text-base">
+                                    <i class="fas fa-book-open mr-2 sm:mr-3"></i> Read Online Version
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Policy Areas -->
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">Key Policy Areas</h3>
+
+                        <!-- Policy Tabs -->
+                        <div class="mb-8 sm:mb-10 md:mb-12">
+                            <p class="text-gray-700 text-base sm:text-lg mb-4 sm:mb-6">
+                                Manithaneya Jananayaga Katchi focuses on practical and people-oriented policies that
+                                address everyday challenges faced by citizens of Tamil Nadu.
+                            </p>
+                            <ul class="space-y-3 sm:space-y-4">
+                                <li class="flex items-start">
+                                    <i
+                                        class="fas fa-check-circle text-[#A31D22] text-lg sm:text-xl mr-3 sm:mr-4 mt-0.5 sm:mt-1"></i>
+                                    <span class="text-gray-800 font-medium text-sm sm:text-base"><b>Education & Skill
+                                            Development:</b> Equal
+                                        access to quality education, skill training for youth, and support for higher
+                                        education and employability.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i
+                                        class="fas fa-check-circle text-[#A31D22] text-lg sm:text-xl mr-3 sm:mr-4 mt-0.5 sm:mt-1"></i>
+                                    <span class="text-gray-800 font-medium text-sm sm:text-base"><b>Employment &
+                                            Economic Opportunity:</b>
+                                        Encouraging job creation, supporting small businesses, farmers, and
+                                        self-employed individuals, and promoting fair economic growth.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i
+                                        class="fas fa-check-circle text-[#A31D22] text-lg sm:text-xl mr-3 sm:mr-4 mt-0.5 sm:mt-1"></i>
+                                    <span class="text-gray-800 font-medium text-sm sm:text-base"><b>Social Welfare &
+                                            Justice:</b> Protection
+                                        of social justice, welfare schemes for the underprivileged, and firm opposition
+                                        to discrimination in any form.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i
+                                        class="fas fa-check-circle text-[#A31D22] text-lg sm:text-xl mr-3 sm:mr-4 mt-0.5 sm:mt-1"></i>
+                                    <span class="text-gray-800 font-medium text-sm sm:text-base"><b>Healthcare & Public
+                                            Services:</b>
+                                        Strengthening public healthcare systems and ensuring access to basic services
+                                        for all sections of society.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i
+                                        class="fas fa-check-circle text-[#A31D22] text-lg sm:text-xl mr-3 sm:mr-4 mt-0.5 sm:mt-1"></i>
+                                    <span class="text-gray-800 font-medium text-sm sm:text-base"><b>Transparent
+                                            Governance:</b> Clean
+                                        administration, accountability in public institutions, and responsible use of
+                                        public resources.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Additional Policy Areas -->
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">Additional Policy Areas
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                            <div
+                                class="p-4 sm:p-5 md:p-6 bg-white border border-gray-200 rounded-xl sm:rounded-2xl hover:border-red-300 transition-all card-hover">
+                                <div class="flex items-center mb-3 sm:mb-4">
+                                    <div
+                                        class="w-10 h-10 sm:w-12 sm:h-12 bg-[#A31D22] rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                                        <i class="fas fa-tractor text-lg sm:text-xl text-white"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900 text-lg sm:text-xl">Agriculture</h4>
+                                </div>
+                                <p class="text-gray-700 text-sm sm:text-base">Fair pricing and timely support for
+                                    farmers, improved
+                                    irrigation and water management, access to modern farming techniques and technology.
+                                </p>
+                            </div>
+
+                            <div
+                                class="p-4 sm:p-5 md:p-6 bg-white border border-gray-200 rounded-xl sm:rounded-2xl hover:border-blue-300 transition-all card-hover">
+                                <div class="flex items-center mb-3 sm:mb-4">
+                                    <div
+                                        class="w-10 h-10 sm:w-12 sm:h-12 bg-[#1A1A1A] rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                                        <i class="fas fa-leaf text-lg sm:text-xl text-white"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900 text-lg sm:text-xl">Environment</h4>
+                                </div>
+                                <p class="text-gray-700 text-sm sm:text-base">Protection of natural resources and
+                                    biodiversity, promotion of
+                                    clean energy and waste management, water conservation and pollution control.</p>
+                            </div>
+
+                            <div
+                                class="p-4 sm:p-5 md:p-6 bg-white border border-gray-200 rounded-xl sm:rounded-2xl hover:border-purple-300 transition-all card-hover">
+                                <div class="flex items-center mb-3 sm:mb-4">
+                                    <div
+                                        class="w-10 h-10 sm:w-12 sm:h-12 bg-[#A31D22] rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                                        <i class="fas fa-gavel text-lg sm:text-xl text-white"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900 text-lg sm:text-xl">Law, Justice & Security</h4>
+                                </div>
+                                <p class="text-gray-700 text-sm sm:text-base">Equal justice under the law, strengthening
+                                    the justice delivery
+                                    system, protection of civil rights and freedoms, community-based approaches to
+                                    public safety.</p>
+                            </div>
+
+                            <div
+                                class="p-4 sm:p-5 md:p-6 bg-white border border-gray-200 rounded-xl sm:rounded-2xl hover:border-green-300 transition-all card-hover">
+                                <div class="flex items-center mb-3 sm:mb-4">
+                                    <div
+                                        class="w-10 h-10 sm:w-12 sm:h-12 bg-[#1A1A1A] rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                                        <i class="fas fa-shield-alt text-lg sm:text-xl text-white"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900 text-lg sm:text-xl">Governance & Anti-Corruption
+                                    </h4>
+                                </div>
+                                <p class="text-gray-700 text-sm sm:text-base">Transparency in administration and public
+                                    spending, strong
+                                    anti-corruption mechanisms, digital governance and accountability, ethical conduct
+                                    in public offices.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <!-- Policy FAQs -->
+                        <div class="sticky top-24">
+                            <div
+                                class="bg-gradient-to-b from-gray-900 to-gray-800 text-white p-6 sm:p-7 md:p-8 rounded-2xl sm:rounded-3xl mb-6 sm:mb-8 shadow-xl">
+                                <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Policy FAQs</h3>
+                                <div class="space-y-4 sm:space-y-6">
+                                    <div class="pb-4 sm:pb-6 border-b border-gray-700">
+                                        <h4 class="font-bold text-base sm:text-lg mb-2 sm:mb-3 flex items-center">
+                                            <i class="fas fa-question-circle text-[#A31D22] mr-2 sm:mr-3"></i>
+                                            What makes MJK's manifesto different?
+                                        </h4>
+                                        <p class="text-gray-300 text-sm sm:text-base">MJK's manifesto is rooted in
+                                            humanitarian values,
+                                            practical governance, and respect for constitutional principles, focusing on
+                                            long-term solutions rather than short-term promises.</p>
+                                    </div>
+
+                                    <div class="pb-4 sm:pb-6 border-b border-gray-700">
+                                        <h4 class="font-bold text-base sm:text-lg mb-2 sm:mb-3 flex items-center">
+                                            <i class="fas fa-question-circle text-[#A31D22] mr-2 sm:mr-3"></i>
+                                            Are these policies applicable at the state level?
+                                        </h4>
+                                        <p class="text-gray-300 text-sm sm:text-base">Yes. All policies are designed
+                                            with Tamil Nadu's
+                                            social, economic, and regional realities in mind.</p>
+                                    </div>
+
+                                    <div class="pb-4 sm:pb-6 border-b border-gray-700">
+                                        <h4 class="font-bold text-base sm:text-lg mb-2 sm:mb-3 flex items-center">
+                                            <i class="fas fa-question-circle text-[#A31D22] mr-2 sm:mr-3"></i>
+                                            Does MJK support inclusive development?
+                                        </h4>
+                                        <p class="text-gray-300 text-sm sm:text-base">Yes. Inclusive development and
+                                            social justice are core
+                                            principles of the party.</p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-bold text-base sm:text-lg mb-2 sm:mb-3 flex items-center">
+                                            <i class="fas fa-question-circle text-[#A31D22] mr-2 sm:mr-3"></i>
+                                            How does MJK ensure accountability?
+                                        </h4>
+                                        <p class="text-gray-300 text-sm sm:text-base">Through transparent governance,
+                                            public participation,
+                                            and strict ethical standards for leadership.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Quick Links -->
+                            <div
+                                class="bg-white p-6 sm:p-7 md:p-8 rounded-2xl sm:rounded-3xl shadow-lg border border-gray-200">
+                                <h4 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Party Constitution
+                                </h4>
+                                <div class="space-y-3 sm:space-y-4">
+                                    <a href="#"
+                                        class="flex items-center p-3 sm:p-4 bg-gray-50 rounded-lg sm:rounded-xl transition group">
+                                        <div
+                                            class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4 group-hover:bg-gray-100 transition">
+                                            <i class="fas fa-file-contract text-[#A31D22]"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-bold text-gray-900 text-sm sm:text-base">Party Constitution
+                                            </h5>
+                                            <p class="text-xs sm:text-sm text-gray-600">Defines structure, objectives,
+                                                and ethical
+                                                framework</p>
+                                        </div>
+                                        <i
+                                            class="fas fa-chevron-right ml-auto text-gray-400 group-hover:text-[#A31D22]"></i>
+                                    </a>
+
+                                    <a href="#"
+                                        class="flex items-center p-3 sm:p-4 bg-gray-50 rounded-lg sm:rounded-xl transition group">
+                                        <div
+                                            class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4 group-hover:bg-gray-100 transition">
+                                            <i class="fas fa-handshake text-[#1A1A1A]"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-bold text-gray-900 text-sm sm:text-base">Code of Conduct
+                                            </h5>
+                                            <p class="text-xs sm:text-sm text-gray-600">Ethical standards for all
+                                                members and
+                                                office-bearers</p>
+                                        </div>
+                                        <i
+                                            class="fas fa-chevron-right ml-auto text-gray-400 group-hover:text-[#1A1A1A]"></i>
+                                    </a>
+
+                                    <a href="#"
+                                        class="flex items-center p-3 sm:p-4 bg-gray-50 rounded-lg sm:rounded-xl transition group">
+                                        <div
+                                            class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4 group-hover:bg-gray-100 transition">
+                                            <i class="fas fa-vote-yea text-[#1A1A1A]"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-bold text-gray-900 text-sm sm:text-base">Internal Democracy
+                                            </h5>
+                                            <p class="text-xs sm:text-sm text-gray-600">Transparent leadership selection
+                                                processes
+                                            </p>
+                                        </div>
+                                        <i
+                                            class="fas fa-chevron-right ml-auto text-gray-400 group-hover:text-[#1A1A1A]"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Candidates - Mobile Responsive -->
+        <section id="candidates" class="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-white">
+            <div class="container mx-auto px-4">
+                <h2 class="section-title text-3xl sm:text-4xl font-bold text-gray-900 text-center sm:text-left">Our
+                    Candidates</h2>
+                <p class="text-gray-700 text-base sm:text-lg md:text-xl mb-10 sm:mb-16 max-w-3xl">Meet the dedicated
+                    individuals representing our party
+                    in elections across Tamil Nadu.</p>
+
+                <div class="mb-12 sm:mb-16">
+                    <div
+                        class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 sm:mb-10 gap-4">
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900">Current Candidates</h3>
+                        <div
+                            class="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
+                            <span class="text-gray-700 font-medium text-sm sm:text-base">Filter by Region:</span>
+                            <div class="relative w-full sm:w-auto">
+                                <select
+                                    class="appearance-none bg-white border border-gray-300 rounded-xl px-4 sm:px-5 py-2.5 sm:py-3 pr-10 focus:outline-none focus:border-red-500 font-medium w-full sm:w-auto text-sm sm:text-base">
+                                    <option>All Districts</option>
+                                    <option>Chennai</option>
+                                    <option>Coimbatore</option>
+                                    <option>Madurai</option>
+                                    <option>Tiruchirappalli</option>
+                                    <option>Salem</option>
+                                </select>
+                                <div
+                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                        <!-- Candidate 1 -->
+                        <div class="candidate-card bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden">
+                            <div class="h-48 sm:h-56 bg-[#A31D22] relative">
+                                <div
+                                    class="absolute top-3 sm:top-4 left-3 sm:left-4 bg-white text-[#A31D22] px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-bold shadow-md">
+                                    Nagapattinam
+                                </div>
+                                <div
+                                    class="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 w-16 h-16 sm:w-20 sm:h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user-tie text-2xl sm:text-3xl text-white"></i>
+                                </div>
+                            </div>
+                            <div class="p-5 sm:p-6 md:p-8">
+                                <h4 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1 sm:mb-2">Mr. M. Thameemun
+                                    Ansari</h4>
+                                <p class="text-gray-600 font-medium text-sm sm:text-base mb-4 sm:mb-6">Founder &
+                                    President, Former MLA</p>
+                                <div class="flex items-center text-gray-500 mb-4 sm:mb-6">
+                                    <i
+                                        class="fas fa-map-marker-alt mr-2 sm:mr-3 text-[#A31D22] text-sm sm:text-base"></i>
+                                    <span class="font-medium text-sm sm:text-base">Nagapattinam Assembly
+                                        Constituency</span>
+                                </div>
+                                <p class="text-gray-700 text-sm sm:text-base mb-6 sm:mb-8">
+                                    Senior political leader known for principled political approach, focus on social
+                                    justice, and commitment to democratic and constitutional values.
+                                </p>
+                                <div class="flex flex-col sm:flex-row sm:justify-between gap-3 sm:gap-0">
+                                    <button class="candidate-modal-btn btn-outline px-4 sm:px-5 text-sm sm:text-base"
+                                        data-id="1">
+                                        View Profile
+                                    </button>
+                                    <button class="donate-btn btn-primary px-4 sm:px-5 text-sm sm:text-base"
+                                        data-amount="100">
+                                        Donate
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Candidate 2 -->
+                        <div class="candidate-card bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden">
+                            <div class="h-48 sm:h-56 bg-[#1A1A1A] relative">
+                                <div
+                                    class="absolute top-3 sm:top-4 left-3 sm:left-4 bg-white text-[#1A1A1A] px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-bold shadow-md">
+                                    Chennai Central
+                                </div>
+                                <div
+                                    class="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 w-16 h-16 sm:w-20 sm:h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user-tie text-2xl sm:text-3xl text-white"></i>
+                                </div>
+                            </div>
+                            <div class="p-5 sm:p-6 md:p-8">
+                                <h4 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1 sm:mb-2">Dr. R. Kalaivani
+                                </h4>
+                                <p class="text-gray-600 font-medium text-sm sm:text-base mb-4 sm:mb-6">Healthcare
+                                    Advocate & Community Leader</p>
+                                <div class="flex items-center text-gray-500 mb-4 sm:mb-6">
+                                    <i
+                                        class="fas fa-map-marker-alt mr-2 sm:mr-3 text-[#1A1A1A] text-sm sm:text-base"></i>
+                                    <span class="font-medium text-sm sm:text-base">Chennai Central Constituency</span>
+                                </div>
+                                <p class="text-gray-700 text-sm sm:text-base mb-6 sm:mb-8">
+                                    Medical professional with 15 years of public health experience, advocating for
+                                    universal healthcare access and community health initiatives.
+                                </p>
+                                <div class="flex flex-col sm:flex-row sm:justify-between gap-3 sm:gap-0">
+                                    <button class="candidate-modal-btn btn-outline px-4 sm:px-5 text-sm sm:text-base"
+                                        data-id="2">
+                                        View Profile
+                                    </button>
+                                    <button class="donate-btn btn-primary px-4 sm:px-5 text-sm sm:text-base"
+                                        data-amount="100">
+                                        Donate
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Candidate 3 -->
+                        <div class="candidate-card bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden">
+                            <div class="h-48 sm:h-56 bg-[#A31D22] relative">
+                                <div
+                                    class="absolute top-3 sm:top-4 left-3 sm:left-4 bg-white text-[#A31D22] px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-bold shadow-md">
+                                    Coimbatore South
+                                </div>
+                                <div
+                                    class="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 w-16 h-16 sm:w-20 sm:h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user-tie text-2xl sm:text-3xl text-white"></i>
+                                </div>
+                            </div>
+                            <div class="p-5 sm:p-6 md:p-8">
+                                <h4 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1 sm:mb-2">Mr. S. Arunkumar
+                                </h4>
+                                <p class="text-gray-600 font-medium text-sm sm:text-base mb-4 sm:mb-6">Education
+                                    Reformer & Youth Leader</p>
+                                <div class="flex items-center text-gray-500 mb-4 sm:mb-6">
+                                    <i
+                                        class="fas fa-map-marker-alt mr-2 sm:mr-3 text-[#A31D22] text-sm sm:text-base"></i>
+                                    <span class="font-medium text-sm sm:text-base">Coimbatore South Constituency</span>
+                                </div>
+                                <p class="text-gray-700 text-sm sm:text-base mb-6 sm:mb-8">
+                                    Former university professor and education policy expert focused on skill
+                                    development, youth employment, and educational reform in Tamil Nadu.
+                                </p>
+                                <div class="flex flex-col sm:flex-row sm:justify-between gap-3 sm:gap-0">
+                                    <button class="candidate-modal-btn btn-outline px-4 sm:px-5 text-sm sm:text-base"
+                                        data-id="3">
+                                        View Profile
+                                    </button>
+                                    <button class="donate-btn btn-primary px-4 sm:px-5 text-sm sm:text-base"
+                                        data-amount="100">
+                                        Donate
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button class="btn-secondary px-8 sm:px-10 md:px-12 py-3 sm:py-4 text-sm sm:text-base md:text-lg">
+                        <i class="fas fa-users mr-2 sm:mr-3"></i> View All Candidates
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- News & Media - Mobile Responsive -->
+        <section id="news" class="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="section-title text-3xl sm:text-4xl font-bold text-gray-900 text-center sm:text-left">News &
+                    Media</h2>
+                <p class="text-gray-700 text-base sm:text-lg md:text-xl mb-10 sm:mb-16 max-w-3xl">Latest updates, press
+                    releases, and media coverage from
+                    our party activities.</p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
+                    <!-- Press Releases -->
+                    <div class="lg:col-span-2">
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 sm:mb-10">Press Releases</h3>
+                        <div class="space-y-6 sm:space-y-8">
+                            <!-- Press Release 1 -->
+                            <div
+                                class="news-card bg-white p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-lg border-l-5 border-[#A31D22]">
+                                <div class="flex flex-col lg:flex-row gap-5 sm:gap-6 mb-4 sm:mb-6">
+                                    <!-- Thumbnail Preview -->
+                                    <div class="lg:w-2/5">
+                                        <div
+                                            class="relative h-48 lg:h-full w-full bg-gradient-to-br from-[#A31D22]/20 to-gray-100 rounded-xl overflow-hidden flex items-center justify-center">
+                                            <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                                            <div class="relative text-center p-3 sm:p-4">
+                                                <div
+                                                    class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-md">
+                                                    <i
+                                                        class="fas fa-graduation-cap text-xl sm:text-2xl text-[#A31D22]"></i>
+                                                </div>
+                                                <div
+                                                    class="bg-[#A31D22] text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg inline-block">
+                                                    <span class="font-bold text-xs sm:text-sm">EDUCATION
+                                                        INITIATIVE</span>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="absolute bottom-2 sm:bottom-3 right-2 sm:right-3 bg-white/90 px-2 sm:px-3 py-1 rounded-lg">
+                                                <span class="text-xs font-bold text-gray-900">PRESS RELEASE</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Content -->
+                                    <div class="lg:w-3/5">
+                                        <div class="flex items-center mb-3 sm:mb-4">
+                                            <div
+                                                class="w-10 h-10 sm:w-12 sm:h-12 bg-[#F4F4F4] rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                                                <i class="fas fa-newspaper text-[#A31D22] text-lg sm:text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <div
+                                                    class="text-[#A31D22] font-bold mb-0.5 sm:mb-1 text-xs sm:text-sm md:text-base">
+                                                    June 18,
+                                                    2026</div>
+                                                <h4 class="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">MJK
+                                                    Launches
+                                                    "Education for All" Initiative in Rural Tamil Nadu</h4>
+                                            </div>
+                                        </div>
+                                        <p class="text-gray-700 text-sm sm:text-base md:text-lg mb-4 sm:mb-6">
+                                            Manithaneya Jananayaga Katchi today announced a comprehensive education
+                                            initiative
+                                            aimed at improving access to quality education in rural areas of Tamil Nadu.
+                                            The
+                                            program includes digital classrooms, teacher training, and scholarship
+                                            schemes for
+                                            economically disadvantaged students.
+                                        </p>
+                                        <div class="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3">
+                                            <a href="#"
+                                                class="btn-primary flex items-center justify-center text-xs sm:text-sm md:text-base">
+                                                <i class="fas fa-external-link-alt mr-1 sm:mr-2"></i> Read Full Release
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Press Release 2 -->
+                            <div
+                                class="news-card bg-white p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-lg border-l-5 border-[#1A1A1A]">
+                                <div class="flex flex-col lg:flex-row gap-5 sm:gap-6 mb-4 sm:mb-6">
+                                    <!-- Thumbnail Preview -->
+                                    <div class="lg:w-2/5">
+                                        <div
+                                            class="relative h-48 lg:h-full w-full bg-gradient-to-br from-gray-800/20 to-gray-100 rounded-xl overflow-hidden flex items-center justify-center">
+                                            <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                                            <div class="relative text-center p-3 sm:p-4">
+                                                <div
+                                                    class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-md">
+                                                    <i class="fas fa-users text-xl sm:text-2xl text-[#1A1A1A]"></i>
+                                                </div>
+                                                <div
+                                                    class="bg-[#1A1A1A] text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg inline-block">
+                                                    <span class="font-bold text-xs sm:text-sm">YOUTH CONFERENCE</span>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="absolute bottom-2 sm:bottom-3 right-2 sm:right-3 bg-white/90 px-2 sm:px-3 py-1 rounded-lg">
+                                                <span class="text-xs font-bold text-gray-900">CONFERENCE</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Content -->
+                                    <div class="lg:w-3/5">
+                                        <div class="flex items-center mb-3 sm:mb-4">
+                                            <div
+                                                class="w-10 h-10 sm:w-12 sm:h-12 bg-[#F4F4F4] rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                                                <i class="fas fa-users text-[#1A1A1A] text-lg sm:text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <div
+                                                    class="text-[#1A1A1A] font-bold mb-0.5 sm:mb-1 text-xs sm:text-sm md:text-base">
+                                                    June 15,
+                                                    2026</div>
+                                                <h4 class="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">Party
+                                                    President
+                                                    Addresses Youth Conference on Democratic Participation</h4>
+                                            </div>
+                                        </div>
+                                        <p class="text-gray-700 text-sm sm:text-base md:text-lg mb-4 sm:mb-6">
+                                            Mr. M. Thameemun Ansari, President of Manithaneya Jananayaga Katchi,
+                                            addressed a
+                                            gathering of over 5,000 youth at the Tamil Nadu Youth Democratic Conference,
+                                            emphasizing the importance of youth participation in politics and governance
+                                            for a
+                                            stronger democracy.
+                                        </p>
+                                        <div class="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3">
+                                            <a href="#"
+                                                class="btn-primary flex items-center justify-center text-xs sm:text-sm md:text-base">
+                                                <i class="fas fa-external-link-alt mr-1 sm:mr-2"></i> Read Full Release
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Media Gallery -->
+                        <div class="mt-12 sm:mt-16">
+                            <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">Media Gallery</h3>
+                            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                                <div class="group cursor-pointer">
+                                    <div
+                                        class="relative h-40 sm:h-48 w-full bg-gradient-to-br from-[#A31D22]/10 to-gray-50 rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4">
+                                        <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+                                        <div class="relative h-full flex flex-col items-center justify-center">
+                                            <div
+                                                class="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center mb-3 sm:mb-4 shadow-lg">
+                                                <i class="fas fa-image text-2xl sm:text-3xl text-[#A31D22]"></i>
+                                            </div>
+                                            <div class="text-center">
+                                                <div
+                                                    class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#A31D22] opacity-30">
+                                                    PHOTOS</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span
+                                        class="font-bold text-gray-900 text-base sm:text-lg block text-center">Campaign
+                                        Photos</span>
+                                </div>
+
+                                <div class="group cursor-pointer">
+                                    <div
+                                        class="relative h-40 sm:h-48 w-full bg-gradient-to-br from-[#1A1A1A]/10 to-gray-50 rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4">
+                                        <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+                                        <div class="relative h-full flex flex-col items-center justify-center">
+                                            <div
+                                                class="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center mb-3 sm:mb-4 shadow-lg">
+                                                <i class="fas fa-video text-2xl sm:text-3xl text-[#1A1A1A]"></i>
+                                            </div>
+                                            <div class="text-center">
+                                                <div
+                                                    class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1A1A1A] opacity-30">
+                                                    VIDEOS</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span
+                                        class="font-bold text-gray-900 text-base sm:text-lg block text-center">Campaign
+                                        Videos</span>
+                                </div>
+
+                                <div class="group cursor-pointer">
+                                    <div
+                                        class="relative h-40 sm:h-48 w-full bg-gradient-to-br from-[#A31D22]/10 to-gray-50 rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4">
+                                        <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+                                        <div class="relative h-full flex flex-col items-center justify-center">
+                                            <div
+                                                class="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center mb-3 sm:mb-4 shadow-lg">
+                                                <i
+                                                    class="fas fa-microphone-alt text-2xl sm:text-3xl text-[#A31D22]"></i>
+                                            </div>
+                                            <div class="text-center">
+                                                <div
+                                                    class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#A31D22] opacity-30">
+                                                    SPEECHES</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span
+                                        class="font-bold text-gray-900 text-base sm:text-lg block text-center">Speeches</span>
+                                </div>
+
+                                <div class="group cursor-pointer">
+                                    <div
+                                        class="relative h-40 sm:h-48 w-full bg-gradient-to-br from-[#1A1A1A]/10 to-gray-50 rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4">
+                                        <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+                                        <div class="relative h-full flex flex-col items-center justify-center">
+                                            <div
+                                                class="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center mb-3 sm:mb-4 shadow-lg">
+                                                <i class="fas fa-file-alt text-2xl sm:text-3xl text-[#1A1A1A]"></i>
+                                            </div>
+                                            <div class="text-center">
+                                                <div
+                                                    class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1A1A1A] opacity-30">
+                                                    DOCS</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span
+                                        class="font-bold text-gray-900 text-base sm:text-lg block text-center">Documents</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Media Sidebar -->
+                    <div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">Media Coverage</h3>
+                        <div class="space-y-5 sm:space-y-6 mb-10 sm:mb-12">
+                            <!-- Media Coverage 1 -->
+                            <div
+                                class="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+                                <div
+                                    class="h-28 sm:h-32 bg-gradient-to-r from-[#1A1A1A]/10 to-gray-50 relative overflow-hidden">
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div
+                                                class="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1A1A1A] opacity-10">
+                                                THE HINDU</div>
+                                            <div class="absolute inset-0 flex items-center justify-center">
+                                                <i
+                                                    class="fas fa-newspaper text-4xl sm:text-5xl text-[#1A1A1A] opacity-30"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="absolute top-2 sm:top-3 right-2 sm:right-3 bg-white/90 px-2 sm:px-3 py-1 rounded-lg">
+                                        <span class="text-xs font-bold text-gray-900">FRONT PAGE</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 sm:p-5 md:p-6">
+                                    <div class="flex items-center mb-3 sm:mb-4">
+                                        <div
+                                            class="w-12 h-12 sm:w-14 sm:h-14 bg-[#1A1A1A] rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                                            <i class="fas fa-newspaper text-xl sm:text-2xl text-white"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-900 text-base sm:text-lg">The Hindu</h4>
+                                            <p class="text-gray-600 text-xs sm:text-sm">June 17, 2026</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-700 italic text-sm sm:text-base">
+                                        "Manithaneya Jananayaga Katchi's focus on grassroots issues and principled
+                                        politics
+                                        offers a distinct alternative in Tamil Nadu's political landscape."
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Media Coverage 2 -->
+                            <div
+                                class="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+                                <div
+                                    class="h-28 sm:h-32 bg-gradient-to-r from-[#A31D22]/10 to-gray-50 relative overflow-hidden">
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div
+                                                class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#A31D22] opacity-10">
+                                                PUTHIYA
+                                                THALAIMURAI</div>
+                                            <div class="absolute inset-0 flex items-center justify-center">
+                                                <i class="fas fa-tv text-4xl sm:text-5xl text-[#A31D22] opacity-30"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="absolute top-2 sm:top-3 right-2 sm:right-3 bg-white/90 px-2 sm:px-3 py-1 rounded-lg">
+                                        <span class="text-xs font-bold text-gray-900">EXCLUSIVE</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 sm:p-5 md:p-6">
+                                    <div class="flex items-center mb-3 sm:mb-4">
+                                        <div
+                                            class="w-12 h-12 sm:w-14 sm:h-14 bg-[#A31D22] rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                                            <i class="fas fa-tv text-xl sm:text-2xl text-white"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-900 text-base sm:text-lg">Puthiya Thalaimurai
+                                            </h4>
+                                            <p class="text-gray-600 text-xs sm:text-sm">June 16, 2026</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-700 italic text-sm sm:text-base">
+                                        "Exclusive interview with MJK President Mr. M. Thameemun Ansari on social
+                                        justice,
+                                        democratic values, and the party's vision for Tamil Nadu."
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Media Coverage 3 -->
+                            <div
+                                class="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+                                <div
+                                    class="h-28 sm:h-32 bg-gradient-to-r from-[#1A1A1A]/10 to-gray-50 relative overflow-hidden">
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div
+                                                class="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1A1A1A] opacity-10">
+                                                DINAMALAR</div>
+                                            <div class="absolute inset-0 flex items-center justify-center">
+                                                <i
+                                                    class="fas fa-podcast text-4xl sm:text-5xl text-[#1A1A1A] opacity-30"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="absolute top-2 sm:top-3 right-2 sm:right-3 bg-white/90 px-2 sm:px-3 py-1 rounded-lg">
+                                        <span class="text-xs font-bold text-gray-900">ANALYSIS</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 sm:p-5 md:p-6">
+                                    <div class="flex items-center mb-3 sm:mb-4">
+                                        <div
+                                            class="w-12 h-12 sm:w-14 sm:h-14 bg-[#1A1A1A] rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                                            <i class="fas fa-podcast text-xl sm:text-2xl text-white"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-900 text-base sm:text-lg">Dinamalar</h4>
+                                            <p class="text-gray-600 text-xs sm:text-sm">June 15, 2026</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-700 italic text-sm sm:text-base">
+                                        "Analysis of Manithaneya Jananayaga Katchi's policy proposals for agriculture
+                                        and
+                                        rural development in Tamil Nadu."
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Upcoming Events -->
+                        <div
+                            class="bg-gradient-to-r from-gray-900 to-gray-800 text-white p-5 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-xl">
+                            <h3 class="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">Upcoming Events</h3>
+                            <div class="space-y-4 sm:space-y-6">
+                                <div
+                                    class="flex items-center p-3 sm:p-4 bg-white/10 rounded-xl sm:rounded-2xl backdrop-blur-sm">
+                                    <div
+                                        class="w-14 h-14 sm:w-16 sm:h-16 bg-[#A31D22] rounded-lg sm:rounded-xl flex flex-col items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                                        <span class="font-bold text-lg sm:text-xl">20</span>
+                                        <span class="text-xs">JUNE</span>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <h4 class="font-bold text-base sm:text-lg truncate">Town Hall Meeting</h4>
+                                        <p class="text-gray-300 text-xs sm:text-sm truncate">Chennai • 6:00 PM</p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="flex items-center p-3 sm:p-4 bg-white/10 rounded-xl sm:rounded-2xl backdrop-blur-sm">
+                                    <div
+                                        class="w-14 h-14 sm:w-16 sm:h-16 bg-[#1A1A1A] rounded-lg sm:rounded-xl flex flex-col items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                                        <span class="font-bold text-lg sm:text-xl">25</span>
+                                        <span class="text-xs">JUNE</span>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <h4 class="font-bold text-base sm:text-lg truncate">Youth Rally</h4>
+                                        <p class="text-gray-300 text-xs sm:text-sm truncate">Coimbatore • 3:00 PM</p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="flex items-center p-3 sm:p-4 bg-white/10 rounded-xl sm:rounded-2xl backdrop-blur-sm">
+                                    <div
+                                        class="w-14 h-14 sm:w-16 sm:h-16 bg-[#A31D22] rounded-lg sm:rounded-xl flex flex-col items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                                        <span class="font-bold text-lg sm:text-xl">28</span>
+                                        <span class="text-xs">JUNE</span>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <h4 class="font-bold text-base sm:text-lg truncate">Policy Forum</h4>
+                                        <p class="text-gray-300 text-xs sm:text-sm truncate">Madurai • 10:00 AM</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button
+                                class="w-full mt-6 sm:mt-8 btn-outline text-white border-white hover:bg-white hover:text-gray-900 text-sm sm:text-base">
+                                <i class="fas fa-calendar-alt mr-1 sm:mr-2"></i> View All Events
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Get Involved - Mobile Responsive -->
+        <section id="involve" class="py-12 sm:py-16 md:py-20 lg:py-24 bg-[#A31D22] text-white">
+            <div class="container mx-auto px-4">
+                <h2 class="section-title text-3xl sm:text-4xl font-bold text-white text-center sm:text-left">Get
+                    Involved</h2>
+                <p class="text-red-100 text-base sm:text-lg md:text-xl mb-10 sm:mb-16 max-w-3xl">Join our movement for
+                    change. There are many ways to
+                    contribute to our cause and help build a better future for all citizens of Tamil Nadu.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
+                    <div
+                        class="bg-white/10 backdrop-blur-sm p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border border-white/30 card-hover">
+                        <div
+                            class="flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-gradient-to-br from-white to-gray-200 rounded-xl sm:rounded-2xl mb-6 sm:mb-8 mx-auto">
+                            <i class="fas fa-user-plus text-3xl sm:text-4xl text-[#A31D22]"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-center mb-4 sm:mb-6">Join the Party</h3>
+                        <p class="text-center opacity-90 text-sm sm:text-base mb-6 sm:mb-8">Become an official member
+                            and help shape our party's
+                            future direction and policies through democratic participation.</p>
+                        <button onclick="window.location.href='signup.html'"
+                            class="w-full btn-primary bg-white text-[#A31D22] hover:bg-gray-100 text-sm sm:text-base">
+                            <i class="fas fa-user-check mr-2 sm:mr-3"></i> Become a Member
+                        </button>
+                    </div>
+
+                    <div
+                        class="bg-white/10 backdrop-blur-sm p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border border-white/30 card-hover">
+                        <div
+                            class="flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-gradient-to-br from-white to-gray-200 rounded-xl sm:rounded-2xl mb-6 sm:mb-8 mx-auto">
+                            <i class="fas fa-hands-helping text-3xl sm:text-4xl text-[#A31D22]"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-center mb-4 sm:mb-6">Volunteer</h3>
+                        <p class="text-center opacity-90 text-sm sm:text-base mb-6 sm:mb-8">Contribute your time and
+                            skills to our campaigns, events,
+                            and community outreach programs to make a direct impact.</p>
+                        <button onclick="window.location.href='signup.html'"
+                            class="w-full btn-primary bg-white text-[#A31D22] hover:bg-gray-100 text-sm sm:text-base">
+                            <i class="fas fa-hand-rock mr-2 sm:mr-3"></i> Volunteer Now
+                        </button>
+                    </div>
+
+                    <div
+                        class="bg-white/10 backdrop-blur-sm p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border border-white/30 card-hover">
+                        <div
+                            class="flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-gradient-to-br from-white to-gray-200 rounded-xl sm:rounded-2xl mb-6 sm:mb-8 mx-auto">
+                            <i class="fas fa-vote-yea text-3xl sm:text-4xl text-[#A31D22]"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-center mb-4 sm:mb-6">Become a Booth Worker</h3>
+                        <p class="text-center opacity-90 text-sm sm:text-base mb-6 sm:mb-8">Help on election day by
+                            working at polling stations and
+                            ensuring fair, transparent democratic processes.</p>
+                        <button onclick="window.location.href='signup.html'"
+                            class="w-full btn-outline text-white border-white hover:bg-white hover:text-[#A31D22] text-sm sm:text-base">
+                            <i class="fas fa-clipboard-check mr-2 sm:mr-3"></i> Sign Up
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Special Wings -->
+                <div>
+                    <h3 class="text-2xl sm:text-3xl font-bold mb-8 sm:mb-12 text-center">Join Our Special Wings</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                        <a href="#"
+                            class="p-6 sm:p-8 md:p-10 bg-white/10 backdrop-blur-sm rounded-2xl sm:rounded-3xl hover:bg-white/20 transition-all text-center card-hover">
+                            <div
+                                class="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-[#1A1A1A] rounded-xl sm:rounded-2xl mb-4 sm:mb-6 mx-auto">
+                                <i class="fas fa-graduation-cap text-2xl sm:text-3xl text-white"></i>
+                            </div>
+                            <h4 class="font-bold text-lg sm:text-xl mb-3 sm:mb-4">Student / Youth Wing</h4>
+                            <p class="text-red-100 opacity-90 text-sm sm:text-base">Encouraging youth participation in
+                                politics, leadership
+                                development, and addressing youth-related issues.</p>
+                        </a>
+
+                        <a href="#"
+                            class="p-6 sm:p-8 md:p-10 bg-white/10 backdrop-blur-sm rounded-2xl sm:rounded-3xl hover:bg-white/20 transition-all text-center card-hover">
+                            <div
+                                class="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-[#A31D22] rounded-xl sm:rounded-2xl mb-4 sm:mb-6 mx-auto">
+                                <i class="fas fa-female text-2xl sm:text-3xl text-white"></i>
+                            </div>
+                            <h4 class="font-bold text-lg sm:text-xl mb-3 sm:mb-4">Women's Wing</h4>
+                            <p class="text-red-100 opacity-90 text-sm sm:text-base">Promoting women's leadership,
+                                addressing women's
+                                concerns, and encouraging women-led community initiatives.</p>
+                        </a>
+
+                        <a href="#"
+                            class="p-6 sm:p-8 md:p-10 bg-white/10 backdrop-blur-sm rounded-2xl sm:rounded-3xl hover:bg-white/20 transition-all text-center card-hover">
+                            <div
+                                class="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-[#1A1A1A] rounded-xl sm:rounded-2xl mb-4 sm:mb-6 mx-auto">
+                                <i class="fas fa-briefcase text-2xl sm:text-3xl text-white"></i>
+                            </div>
+                            <h4 class="font-bold text-lg sm:text-xl mb-3 sm:mb-4">Professional Wing</h4>
+                            <p class="text-red-100 opacity-90 text-sm sm:text-base">Bringing together experts from
+                                various sectors to support
+                                policy development and governance.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donate Section - Mobile Responsive -->
+        <section id="donate" class="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="section-title text-3xl sm:text-4xl font-bold text-gray-900 text-center sm:text-left">Support
+                    Our Campaign</h2>
+                <p class="text-gray-700 text-base sm:text-lg md:text-xl mb-10 sm:mb-16 max-w-3xl">Your contribution
+                    helps fund our campaigns, outreach
+                    programs, and policy initiatives to create real, lasting change for Tamil Nadu.</p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
+                    <div class="lg:col-span-2">
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 sm:mb-10">Why Donate</h3>
+                        <div class="mb-10 sm:mb-12">
+                            <p class="text-gray-700 text-base sm:text-lg mb-4 sm:mb-6">
+                                Public support plays an important role in strengthening democratic movements.
+                                Contributions to Manithaneya Jananayaga Katchi help the party carry out its activities
+                                in a transparent, lawful, and people-focused manner.
+                            </p>
+                            <p class="text-gray-700 text-base sm:text-lg">
+                                Donations support the party's efforts to promote democratic awareness, conduct
+                                organizational and outreach activities, support policy research, strengthen
+                                grassroots-level participation, and uphold ethical political work.
+                            </p>
+                        </div>
+
+                        <!-- Donation Options -->
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 sm:mb-10">Donation Options</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-10 sm:mb-12">
+                            <div
+                                class="donation-option border-2 border-gray-300 rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center transition-all">
+                                <div class="text-3xl sm:text-4xl font-bold text-[#A31D22] mb-3 sm:mb-4">₹500</div>
+                                <div
+                                    class="w-14 h-14 sm:w-16 sm:h-16 bg-[#F4F4F4] rounded-lg sm:rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                                    <i class="fas fa-hands-helping text-xl sm:text-2xl text-[#A31D22]"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-900 text-lg sm:text-xl mb-3 sm:mb-4">Supporter</h4>
+                                <p class="text-gray-600 text-sm sm:text-base mb-6 sm:mb-8">Helps fund community outreach
+                                    and awareness programs.</p>
+                                <button class="donate-btn w-full btn-primary text-sm sm:text-base" data-amount="500">
+                                    Donate ₹500
+                                </button>
+                            </div>
+
+                            <div
+                                class="donation-option border-2 border-red-500 rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center transition-all relative">
+                                <div class="absolute -top-3 sm:-top-4 left-1/2 transform -translate-x-1/2 bg-[#A31D22] text-white font-bold px-4 sm:px-6 py-1.5 sm:py-2 rounded-full shadow-lg text-xs sm:text-sm"
+                                    style="margin-top: -15px; margin-top: -20px;">
+                                    MOST POPULAR
+                                </div>
+                                <div class="text-3xl sm:text-4xl font-bold text-[#A31D22] mb-3 sm:mb-4">₹1,000</div>
+                                <div
+                                    class="w-14 h-14 sm:w-16 sm:h-16 bg-[#F4F4F4] rounded-lg sm:rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                                    <i class="fas fa-star text-xl sm:text-2xl text-[#A31D22]"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-900 text-lg sm:text-xl mb-3 sm:mb-4">Sustainer</h4>
+                                <p class="text-gray-600 text-sm sm:text-base mb-6 sm:mb-8">Supports policy research and
+                                    grassroots activities for a
+                                    month.</p>
+                                <button class="donate-btn w-full btn-primary text-sm sm:text-base" data-amount="1000">
+                                    Donate ₹1,000
+                                </button>
+                            </div>
+
+                            <div
+                                class="donation-option border-2 border-gray-300 rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center transition-all">
+                                <div class="text-3xl sm:text-4xl font-bold text-[#A31D22] mb-3 sm:mb-4">₹5,000</div>
+                                <div
+                                    class="w-14 h-14 sm:w-16 sm:h-16 bg-[#F4F4F4] rounded-lg sm:rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                                    <i class="fas fa-crown text-xl sm:text-2xl text-[#A31D22]"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-900 text-lg sm:text-xl mb-3 sm:mb-4">Champion</h4>
+                                <p class="text-gray-600 text-sm sm:text-base mb-6 sm:mb-8">Maximum individual donation
+                                    limit per year as per election
+                                    laws.</p>
+                                <button class="donate-btn w-full btn-primary text-sm sm:text-base" data-amount="5000">
+                                    Donate ₹5,000
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Custom Amount -->
+                        <div
+                            class="bg-gradient-to-r from-gray-50 to-gray-100 p-6 sm:p-8 rounded-2xl sm:rounded-3xl mb-10 sm:mb-12">
+                            <h4 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Custom Amount</h4>
+                            <div class="flex flex-col md:flex-row gap-4 sm:gap-6">
+                                <div class="flex-grow">
+                                    <label
+                                        class="block text-gray-700 font-medium mb-2 sm:mb-3 text-sm sm:text-base">Enter
+                                        your donation
+                                        amount</label>
+                                    <div class="relative">
+                                        <div
+                                            class="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-500 font-bold">
+                                            ₹</div>
+                                        <input type="number" id="customAmount" placeholder="1000"
+                                            class="w-full pl-8 sm:pl-10 pr-4 py-3 sm:py-4 border border-gray-300 rounded-lg sm:rounded-xl focus:outline-none focus:border-red-500 text-base sm:text-lg font-medium">
+                                    </div>
+                                </div>
+                                <div class="flex items-end">
+                                    <button id="customDonate"
+                                        class="btn-primary px-6 sm:px-8 md:px-10 py-3 sm:py-4 text-sm sm:text-base md:text-lg w-full md:w-auto">
+                                        <i class="fas fa-heart mr-2 sm:mr-3"></i> Donate Now
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Transparency -->
+                        <div>
+                            <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">Transparency & Fund
+                                Usage</h3>
+                            <div
+                                class="bg-[#F4F4F4] p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border border-gray-200">
+                                <p class="text-gray-800 text-base sm:text-lg mb-6 sm:mb-8">
+                                    MJK is committed to complete transparency and accountability in the use of funds.
+                                    Donations are utilized for organizational operations, public awareness programs,
+                                    communication materials, lawful campaign-related activities, and training
+                                    initiatives.
+                                </p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+                                    <div>
+                                        <h4
+                                            class="font-bold text-gray-900 text-lg sm:text-xl mb-4 sm:mb-6 flex items-center">
+                                            <i class="fas fa-chart-pie text-[#A31D22] mr-2 sm:mr-3"></i>
+                                            Funding Sources
+                                        </h4>
+                                        <ul class="space-y-3 sm:space-y-4">
+                                            <li class="flex items-center">
+                                                <div
+                                                    class="w-3 h-3 sm:w-4 sm:h-4 bg-[#A31D22] rounded-full mr-3 sm:mr-4">
+                                                </div>
+                                                <span class="font-medium text-gray-800 text-sm sm:text-base">Membership
+                                                    contributions</span>
+                                            </li>
+                                            <li class="flex items-center">
+                                                <div
+                                                    class="w-3 h-3 sm:w-4 sm:h-4 bg-[#1A1A1A] rounded-full mr-3 sm:mr-4">
+                                                </div>
+                                                <span class="font-medium text-gray-800 text-sm sm:text-base">Individual
+                                                    donations</span>
+                                            </li>
+                                            <li class="flex items-center">
+                                                <div
+                                                    class="w-3 h-3 sm:w-4 sm:h-4 bg-gray-400 rounded-full mr-3 sm:mr-4">
+                                                </div>
+                                                <span class="font-medium text-gray-800 text-sm sm:text-base">Authorized
+                                                    funding
+                                                    channels</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4
+                                            class="font-bold text-gray-900 text-lg sm:text-xl mb-4 sm:mb-6 flex items-center">
+                                            <i class="fas fa-file-alt text-[#1A1A1A] mr-2 sm:mr-3"></i>
+                                            Financial Disclosures
+                                        </h4>
+                                        <ul class="space-y-2 sm:space-y-3">
+                                            <li><a href="#"
+                                                    class="flex items-center text-[#1A1A1A] hover:text-[#A31D22] font-medium text-sm sm:text-base">
+                                                    <i class="fas fa-external-link-alt mr-2 sm:mr-3"></i> Annual
+                                                    Financial
+                                                    Reports
+                                                </a></li>
+                                            <li><a href="#"
+                                                    class="flex items-center text-[#1A1A1A] hover:text-[#A31D22] font-medium text-sm sm:text-base">
+                                                    <i class="fas fa-external-link-alt mr-2 sm:mr-3"></i> Election
+                                                    Commission
+                                                    Filings
+                                                </a></li>
+                                            <li><a href="#"
+                                                    class="flex items-center text-[#1A1A1A] hover:text-[#A31D22] font-medium text-sm sm:text-base">
+                                                    <i class="fas fa-external-link-alt mr-2 sm:mr-3"></i> Donor List
+                                                    (Legal
+                                                    Disclosure)
+                                                </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Donor FAQs -->
+                    <div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">Donor FAQs</h3>
+                        <div class="space-y-4 sm:space-y-6">
+                            <div class="p-4 sm:p-5 md:p-6 bg-gray-50 rounded-lg sm:rounded-xl md:rounded-2xl">
+                                <h4 class="font-bold text-gray-900 text-base sm:text-lg mb-2 sm:mb-3 flex items-center">
+                                    <i class="fas fa-receipt text-[#A31D22] mr-2 sm:mr-3"></i>
+                                    Who can donate to the party?
+                                </h4>
+                                <p class="text-gray-700 text-sm sm:text-base">Indian citizens who comply with applicable
+                                    laws and regulations
+                                    may donate.</p>
+                            </div>
+
+                            <div class="p-4 sm:p-5 md:p-6 bg-gray-50 rounded-lg sm:rounded-xl md:rounded-2xl">
+                                <h4 class="font-bold text-gray-900 text-base sm:text-lg mb-2 sm:mb-3 flex items-center">
+                                    <i class="fas fa-ban text-[#A31D22] mr-2 sm:mr-3"></i>
+                                    Is there a maximum donation amount?
+                                </h4>
+                                <p class="text-gray-700 text-sm sm:text-base">Individual donations are limited to ₹5,000
+                                    per year as per
+                                    election laws. Corporate donations are strictly prohibited.</p>
+                            </div>
+
+                            <div class="p-4 sm:p-5 md:p-6 bg-gray-50 rounded-lg sm:rounded-xl md:rounded-2xl">
+                                <h4 class="font-bold text-gray-900 text-base sm:text-lg mb-2 sm:mb-3 flex items-center">
+                                    <i class="fas fa-shield-alt text-[#A31D22] mr-2 sm:mr-3"></i>
+                                    How is my donation used?
+                                </h4>
+                                <p class="text-gray-700 text-sm sm:text-base">All contributions are used for party
+                                    activities focused on
+                                    public engagement, organization, and democratic participation.</p>
+                            </div>
+
+                            <div class="p-4 sm:p-5 md:p-6 bg-gray-50 rounded-lg sm:rounded-xl md:rounded-2xl">
+                                <h4 class="font-bold text-gray-900 text-base sm:text-lg mb-2 sm:mb-3 flex items-center">
+                                    <i class="fas fa-user-secret text-[#A31D22] mr-2 sm:mr-3"></i>
+                                    Will I receive a receipt for my donation?
+                                </h4>
+                                <p class="text-gray-700 text-sm sm:text-base">Yes. Official receipts are issued for all
+                                    valid donations, and
+                                    donor information is handled responsibly.</p>
+                            </div>
+                        </div>
+
+                        <!-- Payment Methods -->
+                        <div
+                            class="mt-10 sm:mt-12 p-6 sm:p-7 md:p-8 bg-[#1A1A1A] text-white rounded-2xl sm:rounded-3xl">
+                            <h4 class="font-bold text-xl sm:text-2xl mb-4 sm:mb-6">Accepted Payment Methods</h4>
+                            <div class="flex flex-wrap gap-3 sm:gap-4 text-2xl sm:text-3xl md:text-4xl mb-4 sm:mb-6">
+                                <i class="fas fa-university"></i>
+                                <i class="fas fa-mobile-alt"></i>
+                                <i class="fab fa-google-pay"></i>
+                                <i class="fab fa-cc-paypal"></i>
+                                <i class="fas fa-qrcode"></i>
+                            </div>
+                            <p class="text-gray-300 text-xs sm:text-sm">All transactions are secured with encryption. We
+                                never
+                                store your payment information on our servers.</p>
+                            <div class="mt-4 sm:mt-6 flex items-center">
+                                <i class="fas fa-lock text-green-400 text-xl sm:text-2xl mr-2 sm:mr-3"></i>
+                                <span class="font-medium text-sm sm:text-base">Secure Payment Processing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Election Mode Section - Mobile Responsive -->
+        <section id="vote-info" class="py-12 sm:py-16 md:py-20 lg:py-24 bg-[#1A1A1A] text-white">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-10 sm:gap-12">
+                    <div class="lg:w-2/3">
+                        <h2 class="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6">Election 2026 Information Center</h2>
+                        <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-8 sm:mb-10">Find your polling booth,
+                            check voter registration, and
+                            get all the information you need for election day in Tamil Nadu.</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+                            <div
+                                class="bg-white/10 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg sm:rounded-xl md:rounded-2xl">
+                                <div
+                                    class="w-12 h-12 sm:w-14 sm:h-14 bg-[#A31D22] rounded-lg sm:rounded-xl flex items-center justify-center mb-4 sm:mb-6">
+                                    <i class="fas fa-calendar-day text-xl sm:text-2xl"></i>
+                                </div>
+                                <h4 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Election Day</h4>
+                                <p class="text-gray-300 text-sm sm:text-base">April 2026</p>
+                                <p class="text-xs sm:text-sm text-gray-400 mt-1 sm:mt-2">Polls open 7:00 AM - 6:00 PM
+                                </p>
+                            </div>
+
+                            <div
+                                class="bg-white/10 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg sm:rounded-xl md:rounded-2xl">
+                                <div
+                                    class="w-12 h-12 sm:w-14 sm:h-14 bg-[#1A1A1A] rounded-lg sm:rounded-xl flex items-center justify-center mb-4 sm:mb-6">
+                                    <i class="fas fa-vote-yea text-xl sm:text-2xl"></i>
+                                </div>
+                                <h4 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Voter Registration</h4>
+                                <p class="text-gray-300 text-sm sm:text-base">Deadline: March 2026</p>
+                                <p class="text-xs sm:text-sm text-gray-400 mt-1 sm:mt-2">Register online or at ECI
+                                    centers</p>
+                            </div>
+
+                            <div
+                                class="bg-white/10 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-lg sm:rounded-xl md:rounded-2xl">
+                                <div
+                                    class="w-12 h-12 sm:w-14 sm:h-14 bg-[#A31D22] rounded-lg sm:rounded-xl flex items-center justify-center mb-4 sm:mb-6">
+                                    <i class="fas fa-id-card text-xl sm:text-2xl"></i>
+                                </div>
+                                <h4 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Voter ID Required</h4>
+                                <p class="text-gray-300 text-sm sm:text-base">EPIC Card or Alternative ID</p>
+                                <p class="text-xs sm:text-sm text-gray-400 mt-1 sm:mt-2">As per Election Commission
+                                    guidelines</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/3 mt-10 sm:mt-12 lg:mt-0">
+                        <div class="bg-white text-gray-900 p-6 sm:p-7 md:p-8 rounded-2xl sm:rounded-3xl shadow-2xl">
+                            <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center">Polling Booth Locator
+                            </h3>
+                            <div class="mb-4 sm:mb-6">
+                                <label class="block text-gray-700 font-medium mb-2 sm:mb-3 text-sm sm:text-base">Enter
+                                    your address</label>
+                                <input type="text"
+                                    class="w-full px-4 sm:px-5 py-3 sm:py-4 border border-gray-300 rounded-lg sm:rounded-xl focus:outline-none focus:border-red-500 text-sm sm:text-base"
+                                    placeholder="Street, City, District">
+                            </div>
+                            <button class="w-full btn-primary py-3 sm:py-4 text-sm sm:text-base md:text-lg">
+                                <i class="fas fa-search mr-2 sm:mr-3"></i> Find Polling Booth
+                            </button>
+                            <div class="mt-4 sm:mt-6 text-center">
+                                <div class="flex items-center justify-center text-gray-600">
+                                    <i class="fas fa-phone-alt mr-2 sm:mr-3 text-[#A31D22]"></i>
+                                    <span class="font-medium text-sm sm:text-base">ECI Helpline: 1950</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Footer - Mobile Responsive -->
+        <section class="pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-8 sm:pb-10 md:pb-12 bg-[#1A1A1A] text-white">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12 mb-12 sm:mb-16">
+                    <div>
+                        <div class="flex items-center space-x-3 sm:space-x-4 mb-6 sm:mb-8">
+                            <img src="mjklogo.jpg" alt="MJK Logo" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16"
+                                style="
+    border-radius: 10px;
+">
+                            <div>
+                                <h2 class="text-xl sm:text-2xl font-bold">MJK</h2>
+                                <p class="text-gray-400 font-medium text-xs sm:text-sm">Manithaneya Jananayaga Katchi
+                                </p>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-sm sm:text-base mb-6 sm:mb-8">
+                            A progressive political party in Tamil Nadu committed to social justice, economic
+                            opportunity, democratic values, and accountable governance for all citizens.
+                        </p>
+                        <div class="flex space-x-3 sm:space-x-4">
+                            <a href="#"
+                                class="w-10 h-10 sm:w-12 sm:h-12 bg-gray-800 hover:bg-[#A31D22] rounded-lg sm:rounded-xl flex items-center justify-center transition">
+                                <i class="fab fa-facebook-f text-sm sm:text-base"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 sm:w-12 sm:h-12 bg-gray-800 hover:bg-[#A31D22] rounded-lg sm:rounded-xl flex items-center justify-center transition">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 sm:w-12 sm:h-12 bg-gray-800 hover:bg-[#A31D22] rounded-lg sm:rounded-xl flex items-center justify-center transition">
+                                <i class="fab fa-instagram text-sm sm:text-base"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 sm:w-12 sm:h-12 bg-gray-800 hover:bg-[#A31D22] rounded-lg sm:rounded-xl flex items-center justify-center transition">
+                                <i class="fab fa-youtube text-sm sm:text-base"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-6 sm:mb-8">Contact Us</h3>
+                        <ul class="space-y-4 sm:space-y-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-[#A31D22] mr-3 sm:mr-4 mt-0.5 sm:mt-1"></i>
+                                <span class="text-gray-400 text-sm sm:text-base">Manithaneya Jananayaga Katchi
+                                    (MJK)<br>Chennai, Tamil Nadu,
+                                    India</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-envelope text-[#A31D22] mr-3 sm:mr-4 mt-0.5 sm:mt-1"></i>
+                                <span class="text-gray-400 text-sm sm:text-base">info@mjkparty.org</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-phone text-[#A31D22] mr-3 sm:mr-4 mt-0.5 sm:mt-1"></i>
+                                <span class="text-gray-400 text-sm sm:text-base">+91-XXXXXXXXXX</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-clock text-[#A31D22] mr-3 sm:mr-4 mt-0.5 sm:mt-1"></i>
+                                <span class="text-gray-400 text-sm sm:text-base">Monday - Friday: 10am-6pm</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-6 sm:mb-8">Quick Links</h3>
+                        <ul class="space-y-3 sm:space-y-4">
+                            <li><a href="#manifesto"
+                                    class="text-gray-400 hover:text-white transition text-sm sm:text-base">Manifesto</a>
+                            </li>
+                            <li><a href="#candidates"
+                                    class="text-gray-400 hover:text-white transition text-sm sm:text-base">Candidates</a>
+                            </li>
+                            <li><a href="#news"
+                                    class="text-gray-400 hover:text-white transition text-sm sm:text-base">News &
+                                    Media</a></li>
+                            <li><a href="#involve"
+                                    class="text-gray-400 hover:text-white transition text-sm sm:text-base">Get
+                                    Involved</a>
+                            </li>
+                            <li><a href="#donate"
+                                    class="text-gray-400 hover:text-white transition text-sm sm:text-base">Donate</a>
+                            </li>
+                            <li><a href="#vote-info"
+                                    class="text-gray-400 hover:text-white transition text-sm sm:text-base">Voting
+                                    Information</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-6 sm:mb-8">Legal & Resources</h3>
+                        <ul class="space-y-3 sm:space-y-4">
+                            <li><a href="#"
+                                    class="text-gray-400 hover:text-white transition text-sm sm:text-base">Privacy
+                                    Policy</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition text-sm sm:text-base">Terms
+                                    & Conditions</a>
+                            </li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition text-sm sm:text-base">Code
+                                    of Conduct</a></li>
+                            <li><a href="#"
+                                    class="text-gray-400 hover:text-white transition text-sm sm:text-base">Financial
+                                    Disclosures</a>
+                            </li>
+                            <li><a href="#"
+                                    class="text-gray-400 hover:text-white transition text-sm sm:text-base">Election
+                                    Commission
+                                    Details</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition text-sm sm:text-base">RTI
+                                    Information</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div
+                    class="border-t border-gray-800 pt-6 sm:pt-8 md:pt-10 text-center text-gray-500 text-sm sm:text-base">
+                    <p class="mb-3 sm:mb-4">&copy; 2026 Manithaneya Jananayaga Katchi. All rights reserved. | Registered
+                        with
+                        Election Commission of India</p>
+                    <p class="text-xs sm:text-sm">Political advertisement paid for by Manithaneya Jananayaga Katchi,
+                        Chennai, Tamil
+                        Nadu. Authorized by the Election Commission of India.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <div class="p-6 sm:p-8">
+                <div class="flex justify-between items-center mb-6 sm:mb-8">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-gray-900">Campaign Video</h3>
+                    <button id="closeVideoModal"
+                        class="text-gray-500 hover:text-gray-800 text-2xl sm:text-3xl">&times;</button>
+                </div>
+                <div
+                    class="bg-gray-900 h-64 sm:h-72 md:h-80 lg:h-96 rounded-xl sm:rounded-2xl flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <i class="fas fa-play-circle text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-4 sm:mb-6"></i>
+                        <p class="text-xl sm:text-2xl font-bold">Campaign Video Player</p>
+                        <p class="text-gray-400 mt-2 sm:mt-4 text-sm sm:text-base">In a real implementation, this would
+                            play our campaign video</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Candidate Modal -->
+    <div id="candidateModal" class="modal">
+        <div class="modal-content">
+            <div class="p-6 sm:p-8">
+                <div class="flex justify-between items-center mb-6 sm:mb-8">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-gray-900">Candidate Profile</h3>
+                    <button id="closeCandidateModal"
+                        class="text-gray-500 hover:text-gray-800 text-2xl sm:text-3xl">&times;</button>
+                </div>
+                <div id="candidateModalContent">
+                    <!-- Content loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Donation Modal -->
+    <div id="donationModal" class="modal">
+        <div class="modal-content">
+            <div class="p-6 sm:p-8">
+                <div class="flex justify-between items-center mb-6 sm:mb-8">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-gray-900">Make a Donation</h3>
+                    <button id="closeDonationModal"
+                        class="text-gray-500 hover:text-gray-800 text-2xl sm:text-3xl">&times;</button>
+                </div>
+                <div id="donationModalContent">
+                    <!-- Content loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Navigation Active State
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section[id]');
+
+        function setActiveNavLink() {
+            let current = '';
+            const scrollPosition = window.scrollY + 100;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('nav-active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('nav-active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', setActiveNavLink);
+
+        // Policy Tabs
+        const policyTabs = document.querySelectorAll('.policy-tab');
+        const policyContents = document.querySelectorAll('.policy-content');
+
+        policyTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+
+                // Update active tab
+                policyTabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.classList.remove('bg-red-600', 'text-white');
+                    t.classList.add('bg-gray-200', 'text-gray-800');
+                });
+
+                tab.classList.add('active');
+                tab.classList.add('bg-red-600', 'text-white');
+                tab.classList.remove('bg-gray-200', 'text-gray-800');
+
+                // Show active content
+                policyContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+
+                document.getElementById(`policy-${tabId}`).classList.remove('hidden');
+            });
+        });
+
+        // Modals
+        const videoModal = document.getElementById('videoModal');
+        const watchVideoBtn = document.getElementById('watchVideoBtn');
+        const closeVideoModal = document.getElementById('closeVideoModal');
+
+        watchVideoBtn.addEventListener('click', () => {
+            videoModal.style.display = 'block';
+        });
+
+        closeVideoModal.addEventListener('click', () => {
+            videoModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === videoModal || e.target === candidateModal || e.target === donationModal) {
+                videoModal.style.display = 'none';
+                candidateModal.style.display = 'none';
+                donationModal.style.display = 'none';
+            }
+        });
+
+        // Candidate Modal
+        const candidateModal = document.getElementById('candidateModal');
+        const closeCandidateModal = document.getElementById('closeCandidateModal');
+        const candidateModalBtns = document.querySelectorAll('.candidate-modal-btn');
+
+        const candidateData = {
+            1: {
+                name: "Mr. M. Thameemun Ansari",
+                constituency: "Nagapattinam Assembly Constituency",
+                partyRole: "Founder & President, Former MLA (2016-2021)",
+                bio: "Mr. M. Thameemun Ansari is a senior political leader and the founding force behind Manithaneya Jananayaga Katchi. He served as an elected Member of the Tamil Nadu Legislative Assembly from Nagapattinam from 2016 to 2021. He is known for his principled political approach, focus on social justice, and commitment to democratic and constitutional values.",
+                experience: [
+                    "Founder & President, Manithaneya Jananayaga Katchi",
+                    "Member of Tamil Nadu Legislative Assembly (2016-2021)",
+                    "Represented Nagapattinam constituency",
+                    "Advocated for public welfare and local development"
+                ],
+                achievements: [
+                    "Represented constituency issues in the Tamil Nadu Legislative Assembly",
+                    "Advocated for public welfare and local development needs",
+                    "Maintained a people-oriented approach to political representation",
+                    "Focused on accountability, fairness, and ethical conduct in public life"
+                ],
+                contact: "contact@mjkparty.org",
+                phone: "+91-XXXXXXXXXX"
+            },
+            2: {
+                name: "Dr. R. Kalaivani",
+                constituency: "Chennai Central Constituency",
+                partyRole: "Healthcare Advocate & Community Leader",
+                bio: "Dr. R. Kalaivani is a medical professional with 15 years of public health experience. She has worked extensively in community health initiatives and advocates for universal healthcare access. Her work focuses on improving healthcare infrastructure in underserved areas of Tamil Nadu.",
+                experience: [
+                    "Medical Practitioner with 15 years experience",
+                    "Public Health Advocate",
+                    "Community Health Program Coordinator",
+                    "Healthcare Policy Advisor"
+                ],
+                achievements: [
+                    "Implemented community health programs benefiting 50,000+ people",
+                    "Advocated for improved healthcare infrastructure in rural areas",
+                    "Led health awareness campaigns across Tamil Nadu",
+                    "Worked on maternal and child health initiatives"
+                ],
+                contact: "kalaivani@mjkparty.org",
+                phone: "+91-XXXXXXXXXX"
+            },
+            3: {
+                name: "Mr. S. Arunkumar",
+                constituency: "Coimbatore South Constituency",
+                partyRole: "Education Reformer & Youth Leader",
+                bio: "Mr. S. Arunkumar is a former university professor and education policy expert with over 12 years of experience in academia. He focuses on skill development, youth employment, and educational reform in Tamil Nadu. His work emphasizes making education more accessible and relevant to employment needs.",
+                experience: [
+                    "Former University Professor",
+                    "Education Policy Expert",
+                    "Skill Development Coordinator",
+                    "Youth Employment Advisor"
+                ],
+                achievements: [
+                    "Developed skill development programs for 10,000+ youth",
+                    "Advocated for education policy reforms",
+                    "Established career guidance centers in 5 districts",
+                    "Worked on digital literacy initiatives"
+                ],
+                contact: "arunkumar@mjkparty.org",
+                phone: "+91-XXXXXXXXXX"
+            }
+        };
+
+        candidateModalBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const candidateId = btn.getAttribute('data-id');
+                const candidate = candidateData[candidateId];
+
+                document.getElementById('candidateModalContent').innerHTML = `
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
+                        <div class="lg:col-span-1">
+                            <div class="h-56 sm:h-64 md:h-72 bg-gradient-to-br from-red-600 to-red-800 rounded-xl sm:rounded-2xl flex items-center justify-center mb-6 sm:mb-8">
+                                <i class="fas fa-user-tie text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white"></i>
+                            </div>
+                            <h4 class="text-2xl sm:text-3xl font-bold text-center text-gray-900">${candidate.name}</h4>
+                            <p class="text-center text-gray-600 text-base sm:text-lg mt-1 sm:mt-2">${candidate.partyRole}</p>
+                            <div class="mt-6 sm:mt-8 space-y-3 sm:space-y-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-envelope text-red-600 mr-3 sm:mr-4"></i>
+                                    <span class="text-sm sm:text-base">${candidate.contact}</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-phone text-blue-600 mr-3 sm:mr-4"></i>
+                                    <span class="text-sm sm:text-base">${candidate.phone}</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-map-marker-alt text-green-600 mr-3 sm:mr-4"></i>
+                                    <span class="text-sm sm:text-base">${candidate.constituency}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-2">
+                            <h4 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Biography</h4>
+                            <p class="text-gray-700 text-base sm:text-lg mb-8 sm:mb-10">${candidate.bio}</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                                <div>
+                                    <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">Experience</h4>
+                                    <ul class="space-y-2 sm:space-y-3">
+                                        ${candidate.experience.map(exp => `
+                                            <li class="flex items-start">
+                                                <i class="fas fa-check text-green-600 mr-2 sm:mr-3 mt-0.5 sm:mt-1"></i>
+                                                <span class="text-gray-700 text-sm sm:text-base">${exp}</span>
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+                                
+                                <div>
+                                    <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">Key Achievements</h4>
+                                    <ul class="space-y-2 sm:space-y-3">
+                                        ${candidate.achievements.map(achievement => `
+                                            <li class="flex items-start">
+                                                <i class="fas fa-star text-amber-500 mr-2 sm:mr-3 mt-0.5 sm:mt-1"></i>
+                                                <span class="text-gray-700 text-sm sm:text-base">${achievement}</span>
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-gray-200">
+                                <button class="donate-btn btn-primary px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base" data-amount="1000">
+                                    <i class="fas fa-heart mr-2 sm:mr-3"></i> Support ${candidate.name.split(' ')[0]}'s Campaign
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                candidateModal.style.display = 'block';
+
+                // Re-attach donation button event
+                document.querySelector('#candidateModalContent .donate-btn')?.addEventListener('click', function () {
+                    const amount = this.getAttribute('data-amount');
+                    showDonationModal(amount);
+                });
+            });
+        });
+
+        closeCandidateModal.addEventListener('click', () => {
+            candidateModal.style.display = 'none';
+        });
+
+        // Donation Modal
+        const donationModal = document.getElementById('donationModal');
+        const closeDonationModal = document.getElementById('closeDonationModal');
+        const donateBtns = document.querySelectorAll('.donate-btn');
+        const customDonateBtn = document.getElementById('customDonate');
+        const customAmountInput = document.getElementById('customAmount');
+
+        function showDonationModal(amount) {
+            document.getElementById('donationModalContent').innerHTML = `
+                <div class="mb-8 sm:mb-10">
+                    <div class="bg-gradient-to-r from-red-50 to-pink-50 p-6 sm:p-8 rounded-xl sm:rounded-2xl mb-6 sm:mb-8">
+                        <div class="text-center">
+                            <div class="text-4xl sm:text-5xl font-bold text-red-600 mb-3 sm:mb-4">₹${amount}</div>
+                            <p class="text-gray-700 text-base sm:text-lg">You are about to donate <span class="font-bold">₹${amount}</span> to the Manithaneya Jananayaga Katchi campaign.</p>
+                            <p class="text-gray-600 mt-3 sm:mt-4 text-sm sm:text-base">Your contribution will help fund our campaigns, outreach programs, and policy initiatives to create real change in Tamil Nadu.</p>
+                        </div>
+                    </div>
+                    
+                    <form id="donationForm">
+                        <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">Donation Information</h4>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2 sm:mb-3 text-sm sm:text-base">First Name</label>
+                                <input type="text" class="w-full px-4 sm:px-5 py-2.5 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl focus:outline-none focus:border-red-500 text-sm sm:text-base" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2 sm:mb-3 text-sm sm:text-base">Last Name</label>
+                                <input type="text" class="w-full px-4 sm:px-5 py-2.5 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl focus:outline-none focus:border-red-500 text-sm sm:text-base" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4 sm:mb-6">
+                            <label class="block text-gray-700 font-medium mb-2 sm:mb-3 text-sm sm:text-base">Email Address</label>
+                            <input type="email" class="w-full px-4 sm:px-5 py-2.5 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl focus:outline-none focus:border-red-500 text-sm sm:text-base" required>
+                        </div>
+                        
+                        <div class="mb-6 sm:mb-8">
+                            <label class="block text-gray-700 font-medium mb-2 sm:mb-3 text-sm sm:text-base">Payment Information</label>
+                            <div class="mb-3 sm:mb-4">
+                                <select class="w-full px-4 sm:px-5 py-2.5 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl focus:outline-none focus:border-red-500 text-sm sm:text-base">
+                                    <option>Select Payment Method</option>
+                                    <option>UPI</option>
+                                    <option>Bank Transfer</option>
+                                    <option>Credit/Debit Card</option>
+                                    <option>Digital Wallet</option>
+                                </select>
+                            </div>
+                            <div class="bg-yellow-50 p-3 sm:p-4 rounded-lg sm:rounded-xl border border-yellow-200">
+                                <p class="text-yellow-800 text-xs sm:text-sm"><i class="fas fa-info-circle mr-1 sm:mr-2"></i>Note: Individual donations are limited to ₹5,000 per year as per election laws. Corporate donations are strictly prohibited.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6 sm:mb-8">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="w-4 h-4 sm:w-5 sm:h-5 text-red-600 rounded focus:ring-red-500" checked>
+                                <span class="ml-2 sm:ml-3 text-gray-700 text-sm sm:text-base">I confirm that I am an Indian citizen and this donation complies with election laws</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="w-full btn-primary py-3 sm:py-4 text-sm sm:text-base md:text-lg">
+                            <i class="fas fa-heart mr-2 sm:mr-3"></i> Donate ₹${amount}
+                        </button>
+                    </form>
+                </div>
+            `;
+
+            donationModal.style.display = 'block';
+
+            // Handle form submission
+            document.getElementById('donationForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert(`Thank you for your donation of ₹${amount}! This is a demonstration - no actual payment was processed.`);
+                donationModal.style.display = 'none';
+            });
+        }
+
+        donateBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                const amount = this.getAttribute('data-amount') || 1000;
+                showDonationModal(amount);
+            });
+        });
+
+        customDonateBtn.addEventListener('click', () => {
+            const amount = customAmountInput.value || 1000;
+            showDonationModal(amount);
+        });
+
+        closeDonationModal.addEventListener('click', () => {
+            donationModal.style.display = 'none';
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // View All Leaders Button
+        document.getElementById('viewAllLeaders')?.addEventListener('click', () => {
+            alert('This would open a comprehensive page with all party leaders, spokespersons, and their detailed profiles. In a full implementation, this would be a separate page or expand this section.');
+        });
+
+        // Initialize
+        setActiveNavLink();
+
+        // Add subtle animation to cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, observerOptions);
+
+        // Observe cards for animation
+        document.querySelectorAll('.card-hover').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+
+</html>

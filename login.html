@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Manithaneya Jananayaga Katchi (MJK)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap">
+    <style>
+        :root {
+            --primary-red: #A31D22;
+            --primary-blue: #1A1A1A;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+        
+        h1, h2, h3, h4, h5, .font-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-red);
+            color: white;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: #b51f1f;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            font-weight: 600;
+            padding: 10px 26px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .form-input {
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 12px 16px;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus {
+            border-color: var(--primary-red);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(163, 29, 34, 0.1);
+        }
+        
+        .error-message {
+            color: #dc2626;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        
+        .success-message {
+            color: #16a34a;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        
+        .loader {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--primary-red);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg border-b border-gray-200">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <img src="mjklogo.jpg" alt="MJK Logo" class="w-14 h-14">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900 font-heading">MJK</h1>
+                        <p class="text-sm text-gray-600 font-medium">Manithaneya Jananayaga Katchi</p>
+                    </div>
+                </div>
+                <div>
+                    <a href="index.html" class="btn-outline">
+                        <i class="fas fa-home mr-2"></i> Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Left Column - Login Form -->
+                <div class="space-y-8">
+                    <div>
+                        <h2 class="text-3xl font-extrabold text-gray-900">
+                            Welcome Back
+                        </h2>
+                        <p class="mt-2 text-sm text-gray-600">
+                            Sign in to access your account, exclusive content, and community features.
+                        </p>
+                        
+                        <!-- Success message for new signups -->
+                        <div id="signupSuccess" class="hidden mt-4 p-4 bg-green-50 text-green-700 rounded-lg">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>Account created successfully! Please sign in.</span>
+                        </div>
+                    </div>
+
+                    <!-- Login Form -->
+                    <form id="loginForm" class="space-y-6">
+                        <div id="loginMessages" class="hidden p-4 rounded-lg mb-6"></div>
+                        
+                        <div>
+                            <label for="loginEmail" class="block text-sm font-medium text-gray-700 mb-1">
+                                Email Address *
+                            </label>
+                            <input id="loginEmail" name="email" type="email" required 
+                                   class="form-input" placeholder="you@example.com">
+                            <div id="loginEmailError" class="error-message"></div>
+                        </div>
+                        
+                        <div>
+                            <label for="loginPassword" class="block text-sm font-medium text-gray-700 mb-1">
+                                Password *
+                            </label>
+                            <div class="relative">
+                                <input id="loginPassword" name="password" type="password" required 
+                                       class="form-input pr-10" placeholder="Enter your password">
+                                <button type="button" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500" onclick="togglePassword('loginPassword')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div id="loginPasswordError" class="error-message"></div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <input id="rememberMe" name="rememberMe" type="checkbox" 
+                                       class="w-4 h-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
+                                <label for="rememberMe" class="ml-2 text-sm text-gray-700">
+                                    Remember me
+                                </label>
+                            </div>
+                            
+                            <div class="text-sm">
+                                <a href="#forgotPasswordModal" onclick="showForgotPassword()" class="font-medium text-red-600 hover:text-red-500">
+                                    Forgot password?
+                                </a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="submit" id="loginBtn" class="group relative w-full btn-primary flex justify-center items-center">
+                                <span id="loginText">Sign In</span>
+                                <div id="loginLoader" class="loader ml-3"></div>
+                            </button>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="text-sm text-gray-600 mb-4">
+                                Or sign in with
+                            </div>
+                            <div class="flex justify-center space-x-4">
+                                <button type="button" class="p-3 border border-gray-300 rounded-full hover:bg-gray-50 transition">
+                                    <i class="fab fa-google text-red-600"></i>
+                                </button>
+                                <button type="button" class="p-3 border border-gray-300 rounded-full hover:bg-gray-50 transition">
+                                    <i class="fab fa-facebook-f text-blue-600"></i>
+                                </button>
+                                <button type="button" class="p-3 border border-gray-300 rounded-full hover:bg-gray-50 transition">
+                                    <i class="fab fa-twitter text-blue-400"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <div class="text-center">
+                        <div class="text-sm text-gray-600">
+                            Don't have an account? 
+                            <a href="signup.html" class="font-medium text-red-600 hover:text-red-500">
+                                Sign up here
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column - Features -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">
+                            Exclusive Member Features
+                        </h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="feature-card">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                                        <i class="fas fa-newspaper text-red-600 text-xl"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900 text-lg">Exclusive Posts</h4>
+                                </div>
+                                <p class="text-gray-600 text-sm">
+                                    Access member-only content, insider updates, and party announcements.
+                                </p>
+                            </div>
+                            
+                            <div class="feature-card">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                        <i class="fas fa-comments text-blue-600 text-xl"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900 text-lg">Comments & Likes</h4>
+                                </div>
+                                <p class="text-gray-600 text-sm">
+                                    Engage with posts, share your thoughts, and interact with other members.
+                                </p>
+                            </div>
+                            
+                            <div class="feature-card">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                                        <i class="fas fa-heart text-green-600 text-xl"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900 text-lg">Contributions</h4>
+                                </div>
+                                <p class="text-gray-600 text-sm">
+                                    Support our campaign with secure donations and track your contributions.
+                                </p>
+                            </div>
+                            
+                            <div class="feature-card">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                                        <i class="fas fa-user-circle text-purple-600 text-xl"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900 text-lg">Personal Profile</h4>
+                                </div>
+                                <p class="text-gray-600 text-sm">
+                                    Create and customize your profile, showcase your involvement and achievements.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-8 text-white">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mr-6">
+                                <i class="fas fa-star text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold">Member Benefits</h4>
+                                <p class="text-red-100">Unlock special privileges as a verified member</p>
+                            </div>
+                        </div>
+                        
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-3 text-green-300"></i>
+                                <span>Priority access to events and rallies</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-3 text-green-300"></i>
+                                <span>Exclusive newsletters and updates</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-3 text-green-300"></i>
+                                <span>Member-only discussion forums</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-3 text-green-300"></i>
+                                <span>Recognition in party communications</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-medium text-gray-900">Reset Password</h3>
+                    <button onclick="hideForgotPassword()" class="text-gray-400 hover:text-gray-500">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div id="forgotPasswordMessages" class="hidden p-3 rounded-lg mb-4"></div>
+                
+                <p class="text-sm text-gray-500 mb-4">
+                    Enter your email address and we'll send you a link to reset your password.
+                </p>
+                
+                <div class="mb-4">
+                    <label for="resetEmail" class="block text-sm font-medium text-gray-700 mb-1">
+                        Email Address
+                    </label>
+                    <input id="resetEmail" type="email" 
+                           class="form-input" placeholder="you@example.com">
+                    <div id="resetEmailError" class="error-message"></div>
+                </div>
+                
+                <div class="flex justify-end space-x-3">
+                    <button onclick="hideForgotPassword()" class="btn-outline px-4 py-2">
+                        Cancel
+                    </button>
+                    <button onclick="sendResetLink()" class="btn-primary px-4 py-2">
+                        Send Reset Link
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <p>&copy; 2026 Manithaneya Jananayaga Katchi. All rights reserved.</p>
+                <p class="text-gray-400 text-sm mt-2">Registered with Election Commission of India</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Check for signup success
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('signup') === 'success') {
+            document.getElementById('signupSuccess').classList.remove('hidden');
+        }
+
+        // Password toggle function
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            const icon = field.nextElementSibling.querySelector('i');
+            
+            if (field.type === 'password') {
+                field.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                field.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        // Forgot Password Modal
+        function showForgotPassword() {
+            document.getElementById('forgotPasswordModal').classList.remove('hidden');
+        }
+
+        function hideForgotPassword() {
+            document.getElementById('forgotPasswordModal').classList.add('hidden');
+            document.getElementById('resetEmail').value = '';
+            document.getElementById('resetEmailError').textContent = '';
+            document.getElementById('forgotPasswordMessages').classList.add('hidden');
+        }
+
+        function sendResetLink() {
+            const email = document.getElementById('resetEmail').value.trim();
+            const errorElement = document.getElementById('resetEmailError');
+            const messagesDiv = document.getElementById('forgotPasswordMessages');
+            
+            // Reset
+            errorElement.textContent = '';
+            messagesDiv.classList.add('hidden');
+            
+            // Validate
+            if (!email) {
+                errorElement.textContent = 'Email is required';
+                return;
+            }
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                errorElement.textContent = 'Please enter a valid email address';
+                return;
+            }
+            
+            // Check if email exists in localStorage (demo)
+            const storedEmail = localStorage.getItem('userEmail');
+            if (storedEmail !== email) {
+                messagesDiv.className = 'bg-red-100 text-red-700 p-3 rounded-lg mb-4';
+                messagesDiv.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i>Email not found. Please check your email address.';
+                messagesDiv.classList.remove('hidden');
+                return;
+            }
+            
+            // Simulate sending reset link
+            messagesDiv.className = 'bg-green-100 text-green-700 p-3 rounded-lg mb-4';
+            messagesDiv.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Reset link sent! Check your email.';
+            messagesDiv.classList.remove('hidden');
+            
+            // Auto close after 3 seconds
+            setTimeout(() => {
+                hideForgotPassword();
+            }, 3000);
+        }
+
+        // Login Form Submission
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Reset errors
+            document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+            document.querySelectorAll('.form-input').forEach(el => el.classList.remove('border-red-500'));
+            document.getElementById('loginMessages').classList.add('hidden');
+            
+            // Get form values
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+            
+            // Validate
+            let isValid = true;
+            
+            if (!email) {
+                showLoginError('loginEmail', 'Email is required');
+                isValid = false;
+            }
+            
+            if (!password) {
+                showLoginError('loginPassword', 'Password is required');
+                isValid = false;
+            }
+            
+            if (!isValid) return;
+            
+            // Show loading state
+            const loginBtn = document.getElementById('loginBtn');
+            const loginText = document.getElementById('loginText');
+            const loginLoader = document.getElementById('loginLoader');
+            
+            loginBtn.disabled = true;
+            loginText.textContent = 'Signing In...';
+            loginLoader.style.display = 'block';
+            
+            // Simulate API call (in real implementation, this would be a fetch request)
+            setTimeout(() => {
+                // For demo purposes, check against stored data
+                const storedEmail = localStorage.getItem('userEmail');
+                const storedUserData = JSON.parse(localStorage.getItem('userData') || '{}');
+                
+                if (email === storedEmail) {
+                    // Login successful
+                    loginBtn.disabled = false;
+                    loginText.textContent = 'Sign In';
+                    loginLoader.style.display = 'none';
+                    
+                    // Store session
+                    if (rememberMe) {
+                        localStorage.setItem('rememberMe', 'true');
+                        localStorage.setItem('userSession', JSON.stringify({
+                            email: email,
+                            loggedInAt: new Date().toISOString()
+                        }));
+                    } else {
+                        sessionStorage.setItem('userSession', JSON.stringify({
+                            email: email,
+                            loggedInAt: new Date().toISOString()
+                        }));
+                    }
+                    
+                    // Set isLoggedIn flag
+                    localStorage.setItem('isLoggedIn', 'true');
+                    
+                    // Store user data for dashboard
+                    localStorage.setItem('currentUser', JSON.stringify(storedUserData));
+                    
+                    // Show success message
+                    showLoginMessage('Login successful! Redirecting to dashboard...', 'success');
+                    
+                    // Redirect to dashboard
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1500);
+                    
+                } else {
+                    // Login failed
+                    loginBtn.disabled = false;
+                    loginText.textContent = 'Sign In';
+                    loginLoader.style.display = 'none';
+                    
+                    showLoginMessage('Invalid email or password. Please try again.', 'error');
+                }
+            }, 1500);
+        });
+
+        function showLoginError(fieldId, message) {
+            const errorElement = document.getElementById(fieldId + 'Error');
+            const inputElement = document.getElementById(fieldId);
+            
+            if (errorElement) {
+                errorElement.textContent = message;
+            }
+            
+            if (inputElement) {
+                inputElement.classList.add('border-red-500');
+            }
+        }
+
+        function showLoginMessage(message, type = 'error') {
+            const messagesDiv = document.getElementById('loginMessages');
+            messagesDiv.className = type === 'error' ? 'bg-red-100 text-red-700 p-4 rounded-lg mb-6' : 'bg-green-100 text-green-700 p-4 rounded-lg mb-6';
+            messagesDiv.innerHTML = `<i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'check-circle'} mr-2"></i>${message}`;
+            messagesDiv.classList.remove('hidden');
+            
+            // Auto-hide after 5 seconds for errors
+            if (type === 'error') {
+                setTimeout(() => {
+                    messagesDiv.classList.add('hidden');
+                }, 5000);
+            }
+        }
+
+        // Demo login credentials
+        // You can remove this in production
+        function fillDemoCredentials() {
+            // Check if we have a demo user
+            if (!localStorage.getItem('userEmail')) {
+                // Create a demo user
+                const demoUser = {
+                    id: 1,
+                    firstName: 'Demo',
+                    lastName: 'User',
+                    email: 'demo@mjkparty.org',
+                    phone: '+91 9876543210',
+                    district: 'Chennai',
+                    userType: 'member',
+                    createdAt: new Date().toISOString(),
+                    profileComplete: true,
+                    contributions: [
+                        { amount: 1000, date: '2024-01-15', type: 'Donation' },
+                        { amount: 500, date: '2024-02-01', type: 'Donation' }
+                    ],
+                    posts: [],
+                    comments: [],
+                    likes: [],
+                    avatar: null,
+                    memberId: 'MJK2024001'
+                };
+                
+                localStorage.setItem('userData', JSON.stringify(demoUser));
+                localStorage.setItem('userEmail', demoUser.email);
+            }
+            
+            document.getElementById('loginEmail').value = 'demo@mjkparty.org';
+            document.getElementById('loginPassword').value = 'Demo@123';
+            showLoginMessage('Demo credentials filled. Click Sign In to continue.', 'success');
+        }
+
+        // Add demo button for testing (remove in production)
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const demoButton = document.createElement('button');
+            demoButton.type = 'button';
+            demoButton.innerHTML = '<i class="fas fa-magic mr-2"></i>Try Demo Account';
+            demoButton.className = 'w-full mt-4 py-2 px-4 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition';
+            demoButton.onclick = fillDemoCredentials;
+            
+            loginForm.parentNode.insertBefore(demoButton, loginForm.nextSibling);
+        });
+    </script>
+</body>
+</html>
